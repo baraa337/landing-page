@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -13,7 +14,6 @@ body{
     text-align:center;
 }
 
-/* الإعلان */
 .ad{
     position:relative;
     display:block;
@@ -31,17 +31,14 @@ body{
     border-radius:8px;
 }
 
-/* وميض خفيف */
 @keyframes blink {0%,100%{opacity:1;}50%{opacity:0.7;}}
 
-/* العد التنازلي */
 #countdown{
     font-size:4vw;
     margin:10px 0;
     color:#333;
 }
 
-/* زر التحميل */
 .download a{
     display:inline-block;
     background:#28a745;
@@ -49,8 +46,10 @@ body{
     text-decoration:none;
     border-radius:8px;
     font-weight:bold;
-    font-size:18px;      /* حجم الكمبيوتر */
-    padding:12px 30px;   /* حجم الكمبيوتر */
+    font-size:1.2vw;       /* نسبي للكمبيوتر */
+    padding:0.8vw 2vw;     /* نسبي للكمبيوتر */
+    min-font-size:16px;
+    min-width:150px;
 }
 .download a.disabled{
     background:#aaa;
@@ -61,8 +60,9 @@ body{
 @media (max-width:480px){
     #countdown{font-size:16px;}
     .download a{
-        font-size:16px;    /* حجم أصغر للجوال */
-        padding:15px 35px; /* زر أكبر للجوال */
+        font-size:4vw;       /* أكبر على الجوال */
+        padding:3vw 10vw;
+        min-width:0;
     }
 }
 </style>
