@@ -10,15 +10,19 @@ body {
     padding: 0;
     font-family: Tahoma, Arial, sans-serif;
     background: #f2f4f7;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
 }
 
 /* الحاوية الرئيسية */
 .container {
     width: 90%;
-    max-width: 600px;  /* عرض متوسط على الكمبيوتر */
+    max-width: 500px;  /* متوسط عرض مناسب للكمبيوتر */
     margin: 20px auto;
     box-sizing: border-box;
+    text-align: center;
 }
 
 /* الإعلان */
@@ -26,11 +30,13 @@ body {
     width: 100%;
     overflow: hidden;
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* تقليل المسافة أسفل الإعلان */
 }
 .ad img {
     width: 100%;
     height: auto;
+    max-height: 250px;   /* الحد الأقصى للارتفاع على الكمبيوتر */
+    object-fit: cover;
     display: block;
     animation: blink 1.5s infinite;
     border-radius: 10px;
@@ -44,8 +50,8 @@ body {
 
 /* العد التنازلي */
 #countdown {
-    font-size: 18px;   /* حجم مناسب على الكمبيوتر */
-    margin: 15px 0;
+    font-size: 18px;
+    margin: 10px 0; /* تقليل المسافة */
     color: #333;
 }
 
@@ -57,7 +63,7 @@ body {
     text-decoration: none;
     border-radius: 10px;
     font-weight: bold;
-    font-size: 16px;     /* حجم مناسب على الكمبيوتر */
+    font-size: 16px;     
     padding: 12px 30px;
     transition: background 0.3s;
 }
