@@ -5,66 +5,82 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>تحميل الملف</title>
 <style>
-/* ضع الكود CSS هنا كما أعلاه */
-body{
-    margin:0;
-    padding:0;
-    font-family:Tahoma,Arial,sans-serif;
-    background:#f2f4f7;
-    text-align:center;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Tahoma, Arial, sans-serif;
+    background: #f2f4f7;
+    text-align: center;
 }
 
-.container{
-    width:90%;
-    max-width:800px; /* أكبر عرض للكمبيوتر */
-    margin:20px auto;
+/* الحاوية الرئيسية */
+.container {
+    width: 90%;
+    max-width: 1200px;   /* أكبر عرض على الكمبيوتر */
+    margin: 30px auto;   /* مركزي تلقائي */
+    box-sizing: border-box;
 }
 
-.ad{
-    width:100%;
-    overflow:hidden;
-    border-radius:8px;
+/* الإعلان */
+.ad {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
-.ad img{
-    width:100%;
-    height:auto;
-    display:block;
-    animation:blink 1.5s infinite;
-    border-radius:8px;
-}
-
-@keyframes blink {0%,100%{opacity:1;}50%{opacity:0.7;}}
-
-#countdown{
-    font-size:20px;
-    margin:15px 0;
-    color:#333;
+.ad img {
+    width: 100%;
+    height: auto;
+    display: block;
+    animation: blink 1.5s infinite;
+    border-radius: 10px;
 }
 
-.download a{
-    display:inline-block;
-    background:#28a745;
-    color:#fff;
-    text-decoration:none;
-    border-radius:8px;
-    font-weight:bold;
-    font-size:1.5vw;
-    padding:0.8vw 2vw;
-    min-font-size:16px;
-    min-width:180px;
-}
-.download a.disabled{
-    background:#aaa;
-    pointer-events:none;
+/* وميض */
+@keyframes blink {
+    0%, 100% {opacity: 1;}
+    50% {opacity: 0.7;}
 }
 
-@media (max-width:768px){
-    #countdown{font-size:18px;}
-    .download a{
-        font-size:4vw;
-        padding:3vw 10vw;
-        min-width:0;
+/* العد التنازلي */
+#countdown {
+    font-size: 24px;     /* أكبر على الكمبيوتر */
+    margin: 20px 0;
+    color: #333;
+}
+
+/* زر التحميل */
+.download a {
+    display: inline-block;
+    background: #28a745;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 20px;    /* مناسب على الكمبيوتر */
+    padding: 12px 35px;
+    transition: background 0.3s;
+}
+.download a:hover {
+    background: #218838;
+}
+.download a.disabled {
+    background: #aaa;
+    pointer-events: none;
+}
+
+/* للجوال */
+@media (max-width:768px) {
+    #countdown {font-size: 20px;}
+    .download a {
+        font-size: 4vw;
+        padding: 3vw 10vw;
+        min-width: 0;
     }
+}
+
+@media (max-width:480px) {
+    #countdown {font-size: 18px;}
 }
 </style>
 </head>
@@ -85,18 +101,18 @@ body{
 </div>
 
 <script>
-let t=5;
-const timerEl=document.getElementById("timer");
-const btn=document.getElementById("downloadBtn");
-const c=setInterval(()=>{
+let t = 5;
+const timerEl = document.getElementById("timer");
+const btn = document.getElementById("downloadBtn");
+const c = setInterval(()=>{
     t--;
-    timerEl.textContent=t;
-    if(t<=0){
+    timerEl.textContent = t;
+    if(t <= 0){
         clearInterval(c);
-        document.getElementById("countdown").style.display="none";
+        document.getElementById("countdown").style.display = "none";
         btn.classList.remove("disabled");
     }
-},1000);
+}, 1000);
 </script>
 
 </body>
