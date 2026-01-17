@@ -5,23 +5,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>تحميل الملف</title>
 <style>
-body{margin:0;padding:0;font-family:Tahoma,Arial,sans-serif;background:#f2f4f7;text-align:center}
+body{
+    margin:0;
+    padding:0;
+    font-family:Tahoma,Arial,sans-serif;
+    background:#f2f4f7;
+    text-align:center;
+}
 
 /* الإعلان */
-.ad{position:relative;display:block;margin:10px auto;max-width:480px;overflow:hidden;border-radius:8px;}
-.ad img{width:100%;display:block;animation:blink 1.5s infinite;border-radius:8px;}
+.ad{
+    position:relative;
+    display:block;
+    margin:10px auto;
+    max-width:480px;
+    width:90%;        /* يجعل العرض متجاوب */
+    overflow:hidden;
+    border-radius:8px;
+}
+.ad img{
+    width:100%;        /* الصورة تتناسب مع حاويتها */
+    height:auto;
+    display:block;
+    animation:blink 1.5s infinite;
+    border-radius:8px;
+}
 
 /* وميض خفيف */
 @keyframes blink {0%,100%{opacity:1;}50%{opacity:0.7;}}
 
 /* العد التنازلي */
-#countdown{font-size:16px;margin:10px 0;color:#333}
+#countdown{
+    font-size:4vw;      /* حجم خط متجاوب */
+    margin:10px 0;
+    color:#333;
+}
 
-/* زر التحميل الأكبر */
+/* زر التحميل */
 .download a{
     display:inline-block;
-    padding:15px 35px;   /* أكبر حجم للزر */
-    font-size:18px;      /* تكبير الخط */
+    padding:2vw 5vw;      /* أبعاد متجاوبة */
+    font-size:4vw;        /* حجم الخط متغير حسب الشاشة */
     background:#28a745;
     color:#fff;
     text-decoration:none;
@@ -31,6 +55,12 @@ body{margin:0;padding:0;font-family:Tahoma,Arial,sans-serif;background:#f2f4f7;t
 .download a.disabled{
     background:#aaa;
     pointer-events:none;
+}
+
+/* ضبط الحد الأدنى لحجم الخط على الجوال */
+@media (max-width:480px){
+    #countdown{font-size:16px;}
+    .download a{font-size:16px;padding:10px 25px;}
 }
 </style>
 </head>
