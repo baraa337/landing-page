@@ -29,6 +29,8 @@ body {
     height: auto;
     display: block;
     border-radius: 12px;
+    max-height: 70vh; /* ارتفاع مناسب على الكمبيوتر */
+    object-fit: contain;
 }
 
 /* محتوى التحميل */
@@ -70,20 +72,25 @@ body {
     .download a {
         font-size: 5vw;
         padding: 3vw 5vw;
-        margin-top: 5px; /* رفع الزر قليلاً فوق أسفل الشاشة */
+        margin-top: 10px; /* رفع الزر قليلاً فوق أسفل الإعلان */
     }
 }
 
 /* الكمبيوتر */
 @media (min-width: 1024px) {
     .content {
-        max-width: 1200px; /* أعرض من السابق */
+        max-width: 1200px; /* أكبر حاوية للكمبيوتر */
         margin: 30px auto;
     }
 
     .ad img {
-        max-height: 75vh;   /* الإعلان أكبر وواضح */
-        object-fit: contain;
+        max-height: 60vh; /* الإعلان كبير وواضح */
+    }
+
+    .download a {
+        font-size: 20px;
+        padding: 16px 50px;
+        margin-top: 15px;
     }
 }
 </style>
