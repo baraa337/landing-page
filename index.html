@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>تحميل الملف</title>
 <style>
+/* ضع الكود CSS هنا كما أعلاه */
 body{
     margin:0;
     padding:0;
@@ -13,12 +14,14 @@ body{
     text-align:center;
 }
 
-.ad{
-    position:relative;
-    display:block;
-    margin:10px auto;
-    max-width:480px;
+.container{
     width:90%;
+    max-width:500px;
+    margin:20px auto;
+}
+
+.ad{
+    width:100%;
     overflow:hidden;
     border-radius:8px;
 }
@@ -32,14 +35,12 @@ body{
 
 @keyframes blink {0%,100%{opacity:1;}50%{opacity:0.7;}}
 
-/* العد التنازلي ثابت الحجم */
 #countdown{
-    font-size:18px;   /* ثابت على الكمبيوتر */
+    font-size:18px;
     margin:10px 0;
     color:#333;
 }
 
-/* زر التحميل */
 .download a{
     display:inline-block;
     background:#28a745;
@@ -47,8 +48,8 @@ body{
     text-decoration:none;
     border-radius:8px;
     font-weight:bold;
-    font-size:1.2vw;       
-    padding:0.8vw 2vw;     
+    font-size:1.2vw;
+    padding:0.8vw 2vw;
     min-font-size:16px;
     min-width:150px;
 }
@@ -57,7 +58,6 @@ body{
     pointer-events:none;
 }
 
-/* للجوال */
 @media (max-width:480px){
     #countdown{font-size:16px;}
     .download a{
@@ -70,6 +70,8 @@ body{
 </head>
 <body>
 
+<div class="container">
+
 <a class="ad" href="https://lirat.store/r/F0H74" target="_blank">
 <img src="https://i.postimg.cc/hG0dZ1nS/FB-IMG-1768594887137.jpg" alt="إعلان">
 </a>
@@ -78,6 +80,8 @@ body{
 
 <div class="download">
 <a id="downloadBtn" href="https://a.top4top.io/f_cJDbBG5nUxhS-DQrD6_c8Q/1768838167/36695w5lu0.rar" class="disabled" download>⬇️ تحميل الملف الآن</a>
+</div>
+
 </div>
 
 <script>
