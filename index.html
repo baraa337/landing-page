@@ -9,40 +9,36 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     font-family: Tahoma, Arial, sans-serif;
     background: #f2f4f7;
-}
-
-.page {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    min-height: 100vh;
-    padding: 20px;
     box-sizing: border-box;
 }
 
 /* الإعلان */
 .ad-container {
-    width: 100%;
-    max-width: 1000px;
-    flex-shrink: 0;
+    width: 90vw;
+    max-width: 1200px;
+    margin-top: 20px;
 }
 
 .ad-container img {
     width: 100%;
     height: auto;
-    max-height: 50vh; /* نصف الشاشة تقريبًا */
+    max-height: 50vh; /* يغطي نصف الشاشة تقريبا */
     object-fit: contain;
     border-radius: 12px;
 }
 
 /* محتوى التحميل */
 .content {
-    width: 100%;
-    max-width: 1000px;
+    width: 90vw;
+    max-width: 1200px;
     margin-top: 20px;
     text-align: center;
 }
@@ -73,6 +69,10 @@ html, body {
 
 /* الجوال */
 @media (max-width: 768px) {
+    .ad-container, .content {
+        width: 95vw;
+    }
+
     .ad-container img {
         max-height: 40vh;
     }
@@ -87,8 +87,6 @@ html, body {
 </head>
 
 <body>
-
-<div class="page">
 
 <div class="ad-container">
     <a href="https://lirat.store/r/F0H74" target="_blank">
@@ -109,8 +107,6 @@ html, body {
            ⬇️ تحميل الملف الآن
         </a>
     </div>
-</div>
-
 </div>
 
 <script>
