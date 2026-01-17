@@ -20,23 +20,23 @@ body {
 
 /* الإعلان */
 .ad-container {
-    width: 90%;
-    max-width: 900px; /* أقصى عرض للكمبيوتر */
+    width: 85%;
+    max-width: 1200px; /* أكبر عرض للكمبيوتر */
     margin: 20px auto;
 }
 
 .ad-container img {
     width: 100%;
     height: auto;
-    max-height: 70vh; /* يمنع الصورة من أن تكون كبيرة جدًا على الكمبيوتر */
+    max-height: 50vh; /* يغطي نصف الشاشة تقريبًا */
     object-fit: contain;
     border-radius: 12px;
 }
 
 /* محتوى التحميل */
 .content {
-    width: 90%;
-    max-width: 900px;
+    width: 85%;
+    max-width: 1200px;
     margin: 20px auto;
 }
 
@@ -55,7 +55,7 @@ body {
     border-radius: 12px;
     font-weight: bold;
     font-size: 18px;
-    padding: 14px 40px;
+    padding: 14px 50px;
     margin-top: 15px;
 }
 
@@ -67,7 +67,11 @@ body {
 /* الجوال */
 @media (max-width: 768px) {
     .ad-container, .content {
-        width: 95%;
+        width: 95%; /* أصغر للجوال */
+    }
+
+    .ad-container img {
+        max-height: 40vh; /* مناسب للجوال */
     }
 
     .download a {
