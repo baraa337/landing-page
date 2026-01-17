@@ -6,38 +6,45 @@
 <title>تحميل الملف</title>
 
 <style>
-body {
+html, body {
     margin: 0;
+    padding: 0;
+    height: 100%;
     font-family: Tahoma, Arial, sans-serif;
     background: #f2f4f7;
 }
 
-/* الحاوية العامة */
 .page {
-    width: 100%;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 /* الإعلان */
 .ad-container {
-    width: 90%;         /* يغطي 90% من الشاشة على الكمبيوتر */
-    max-width: none;    /* لا حدود للحجم */
-    margin: 20px auto;
+    width: 100%;
+    max-width: 1000px;
+    flex-shrink: 0;
 }
 
 .ad-container img {
     width: 100%;
     height: auto;
-    max-height: 80vh; /* الإعلان كبير وواضح على الكمبيوتر */
+    max-height: 50vh; /* نصف الشاشة تقريبًا */
     object-fit: contain;
     border-radius: 12px;
 }
 
 /* محتوى التحميل */
 .content {
-    width: 90%;
-    max-width: none;
-    margin: 20px auto;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 20px;
+    text-align: center;
 }
 
 /* العداد */
@@ -66,12 +73,8 @@ body {
 
 /* الجوال */
 @media (max-width: 768px) {
-    .ad-container, .content {
-        width: 95%;
-    }
-
     .ad-container img {
-        max-height: 40vh; /* مناسب للجوال */
+        max-height: 40vh;
     }
 
     .download a {
