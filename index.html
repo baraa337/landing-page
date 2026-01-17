@@ -6,46 +6,32 @@
 <title>تحميل الملف</title>
 
 <style>
-/* الأساس */
 body {
     margin: 0;
     font-family: Tahoma, Arial, sans-serif;
     background: #f2f4f7;
 }
 
-/* الصفحة كاملة */
-.page {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 /* الحاوية */
 .container {
     width: 94%;
     max-width: 760px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 20px auto;
+    text-align: center;
 }
 
 /* الإعلان */
 .ad {
+    display: block;
     width: 100%;
-    max-height: 55vh;          /* 🔴 المفتاح الحقيقي */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
-/* الصورة */
+/* صورة الإعلان */
 .ad img {
-    max-width: 100%;
-    max-height: 100%;
-    height: auto;
-    width: auto;
+    width: 100%;
+    height: auto;          /* صورة كاملة بدون قص */
+    display: block;
     border-radius: 12px;
     animation: blink 1.5s infinite;
 }
@@ -59,12 +45,17 @@ body {
 /* العداد */
 #countdown {
     font-size: 18px;
-    margin: 8px 0;
+    margin: 10px 0;
     color: #333;
 }
 
 /* زر التحميل */
+.download {
+    margin-bottom: 20px;
+}
+
 .download a {
+    display: inline-block;
     background: #28a745;
     color: #fff;
     text-decoration: none;
@@ -81,19 +72,24 @@ body {
 
 /* الجوال */
 @media (max-width: 768px) {
-    .ad { max-height: none; }   /* الجوال يعرض الصورة كاملة */
     #countdown { font-size: 16px; }
     .download a {
         font-size: 4.5vw;
         padding: 3vw 10vw;
     }
 }
+
+/* الكمبيوتر فقط: منع الطول الزائد */
+@media (min-width: 1024px) {
+    .ad img {
+        max-height: 60vh;   /* الصورة لا تتجاوز 60% من الشاشة */
+        object-fit: contain;
+    }
+}
 </style>
 </head>
 
 <body>
-
-<div class="page">
 
 <div class="container">
 
@@ -114,7 +110,6 @@ body {
     </a>
 </div>
 
-</div>
 </div>
 
 <script>
