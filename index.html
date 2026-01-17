@@ -63,7 +63,7 @@ body {
 /* الجوال */
 @media (max-width: 768px) {
     .content {
-        max-width: 95%;  /* محدود للجوال */
+        max-width: 95%;
     }
 
     .download {
@@ -85,17 +85,17 @@ body {
 /* الكمبيوتر */
 @media (min-width: 1024px) {
     .content {
-        max-width: 900px;  /* متوسطة الحجم على الكمبيوتر */
+        max-width: 1000px;  /* أكبر قليلاً من السابق */
         margin: 20px auto;
     }
 
     .ad img {
-        max-height: 60vh;  /* الإعلان كبير لكن لا يملأ الشاشة */
+        max-height: 70vh;   /* الإعلان أكبر، لكن لا يملأ الشاشة بالكامل */
         object-fit: contain;
     }
 
     .download {
-        position: static; /* الزر تحت الإعلان بشكل طبيعي */
+        position: static; /* الزر تحت الإعلان */
         transform: none;
         width: auto;
     }
