@@ -6,6 +6,7 @@
 <title>تحميل الملف</title>
 
 <style>
+/* الأساس */
 body {
     margin: 0;
     padding: 0;
@@ -30,10 +31,10 @@ body {
     margin-bottom: 15px;
 }
 
-/* صورة الإعلان — بدون قص نهائيًا */
+/* صورة الإعلان */
 .ad img {
     width: 100%;
-    height: auto;          /* 🔴 هذا هو المفتاح */
+    height: auto;          /* عرض الصورة كاملة */
     display: block;
     border-radius: 12px;
     animation: blink 1.5s infinite;
@@ -75,6 +76,14 @@ body {
     .download a {
         font-size: 4.5vw;
         padding: 3vw 10vw;
+    }
+}
+
+/* الكمبيوتر فقط — منع الصفحة من الطول الزائد */
+@media (min-width: 1024px) {
+    .ad img {
+        max-height: 60vh;   /* لا تتجاوز 60% من ارتفاع الشاشة */
+        object-fit: contain;
     }
 }
 </style>
