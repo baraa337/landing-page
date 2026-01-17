@@ -4,87 +4,47 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>تحميل الملف</title>
-
 <style>
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background: #ffffff;
-}
-
-.ad img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-#countdown {
-    font-size: 22px;
-    margin: 25px 0;
-    color: #333;
-}
-
-.download a {
-    display: inline-block;
-    padding: 15px 35px;
-    font-size: 18px;
-    background: #007bff;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 6px;
-}
-
-.download a.disabled {
-    background: #999;
-    pointer-events: none;
-}
+body{margin:0;padding:0;font-family:Tahoma,Arial,sans-serif;background:#f2f4f7;text-align:center}
+.ad{position:relative;display:block;margin-bottom:10px}
+.ad img{width:100%;max-width:480px;display:block;margin:auto;border-radius:8px}
+.ad::after{content:"اضغط على الصورة للانتقال إلى المحتوى";position:absolute;bottom:6px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.55);color:#fff;padding:3px 8px;border-radius:12px;font-size:12px}
+#countdown{font-size:16px;margin:10px 0;color:#333}
+.download a{display:inline-block;padding:10px 25px;font-size:16px;background:#28a745;color:#fff;text-decoration:none;border-radius:6px;font-weight:bold}
+.download a.disabled{background:#aaa;pointer-events:none}
 </style>
-
 </head>
 <body>
 
 <!-- الإعلان -->
-<div class="ad">
-    <a id="adLink" href="https://lirat.store/r/F0H74" target="_blank">
-        <img src="https://i.postimg.cc/hG0dZ1nS/FB-IMG-1768594887137.jpg" alt="إعلان">
-    </a>
-</div>
+<a class="ad" href="https://lirat.store/r/F0H74" target="_blank">
+<img src="https://i.postimg.cc/hG0dZ1nS/FB-IMG-1768594887137.jpg" alt="إعلان">
+</a>
 
 <!-- العد التنازلي -->
-<div id="countdown">انتظر <span id="timer">5</span> ثواني</div>
+<div id="countdown">يرجى الانتظار <span id="timer">5</span> ثواني قبل التحميل</div>
 
-<!-- زر التحميل -->
+<!-- زر التحميل المباشر -->
 <div class="download">
-    <a id="downloadBtn"
-       href="https://www.mediafire.com/file/x9h2bk5y7rsdxw9/PSD.7z/file"
-       class="disabled"
-       target="_blank">
-       تحميل الملف
-    </a>
+<a id="downloadBtn" href="https://download123.example.com/PSD.7z" class="disabled" download>⬇️ تحميل الملف الآن</a>
 </div>
 
 <script>
-window.addEventListener("load", function () {
-    window.open("https://lirat.store/r/F0H74", "_blank");
-});
+let t=5;
+const timerEl=document.getElementById("timer");
+const btn=document.getElementById("downloadBtn");
 
-let timeLeft = 5;
-const timerEl = document.getElementById("timer");
-const downloadBtn = document.getElementById("downloadBtn");
-
-const countdown = setInterval(() => {
-    timeLeft--;
-    timerEl.textContent = timeLeft;
-    if (timeLeft <= 0) {
-        clearInterval(countdown);
-        document.getElementById("countdown").style.display = "none";
-        downloadBtn.classList.remove("disabled");
+const c=setInterval(()=>{
+    t--;
+    timerEl.textContent=t;
+    if(t<=0){
+        clearInterval(c);
+        document.getElementById("countdown").style.display="none";
+        btn.classList.remove("disabled");
     }
-}, 1000);
+},1000);
 </script>
 
 </body>
 </html>
+Design update
