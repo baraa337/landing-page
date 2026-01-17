@@ -12,11 +12,9 @@ body {
     background: #f2f4f7;
 }
 
-/* الحاوية */
-.container {
-    width: 95%;
-    max-width: 900px;     /* أكبر من قبل */
-    margin: 30px auto;
+/* الصفحة كاملة العرض */
+.page {
+    width: 100%;
     text-align: center;
 }
 
@@ -24,15 +22,12 @@ body {
 .ad {
     display: block;
     width: 100%;
-    margin-bottom: 20px;
 }
 
-/* صورة الإعلان */
 .ad img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 14px;
     animation: blink 1.5s infinite;
 }
 
@@ -42,18 +37,20 @@ body {
     50% {opacity:0.7;}
 }
 
+/* محتوى التحميل */
+.content {
+    max-width: 600px;   /* مناسب للجوال */
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
 /* العداد */
 #countdown {
     font-size: 18px;
-    margin: 12px 0;
-    color: #333;
+    margin: 10px 0;
 }
 
 /* زر التحميل */
-.download {
-    margin-bottom: 25px;
-}
-
 .download a {
     display: inline-block;
     background: #28a745;
@@ -72,13 +69,8 @@ body {
 
 /* الجوال */
 @media (max-width: 768px) {
-    .container {
+    .content {
         max-width: 100%;
-        margin-top: 15px;
-    }
-
-    #countdown {
-        font-size: 16px;
     }
 
     .download a {
@@ -87,15 +79,15 @@ body {
     }
 }
 
-/* الكمبيوتر الكبير */
-@media (min-width: 1200px) {
-    .container {
-        max-width: 1100px;   /* الصفحة أعرض على الكمبيوتر */
+/* الكمبيوتر */
+@media (min-width: 1024px) {
+    .ad img {
+        max-height: 70vh;   /* إعلان كبير ومريح */
+        object-fit: contain;
     }
 
-    .ad img {
-        max-height: 65vh;    /* صورة مريحة بدون مبالغة */
-        object-fit: contain;
+    .content {
+        max-width: 800px;  /* النص والزر أكبر */
     }
 }
 </style>
@@ -103,25 +95,28 @@ body {
 
 <body>
 
-<div class="container">
+<div class="page">
 
 <a class="ad" href="https://lirat.store/r/F0H74" target="_blank">
     <img src="https://i.postimg.cc/hG0dZ1nS/FB-IMG-1768594887137.jpg" alt="إعلان">
 </a>
 
-<div id="countdown">
-    يرجى الانتظار <span id="timer">5</span> ثوانٍ قبل التحميل
-</div>
+<div class="content">
 
-<div class="download">
-    <a id="downloadBtn"
-       href="https://a.top4top.io/f_cJDbBG5nUxhS-DQrD6_c8Q/1768838167/36695w5lu0.rar"
-       class="disabled"
-       download>
-       ⬇️ تحميل الملف الآن
-    </a>
-</div>
+    <div id="countdown">
+        يرجى الانتظار <span id="timer">5</span> ثوانٍ قبل التحميل
+    </div>
 
+    <div class="download">
+        <a id="downloadBtn"
+           href="https://a.top4top.io/f_cJDbBG5nUxhS-DQrD6_c8Q/1768838167/36695w5lu0.rar"
+           class="disabled"
+           download>
+           ⬇️ تحميل الملف الآن
+        </a>
+    </div>
+
+</div>
 </div>
 
 <script>
