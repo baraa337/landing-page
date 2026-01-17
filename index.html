@@ -19,24 +19,23 @@ body {
 }
 
 /* الإعلان */
-.ad {
-    width: 100%;
-    margin-bottom: 15px;
+.ad-container {
+    width: 85%;        /* عرض مناسب للكمبيوتر */
+    max-width: 1200px; /* أقصى عرض */
+    margin: 20px auto;
 }
 
-.ad img {
+.ad-container img {
     width: 100%;
     height: auto;
-    display: block;
     border-radius: 12px;
-    max-height: 70vh; /* ارتفاع مناسب على الكمبيوتر */
-    object-fit: contain;
 }
 
 /* محتوى التحميل */
 .content {
+    width: 85%;        /* نفس عرض الحاوية */
+    max-width: 1200px;
     margin: 20px auto;
-    padding: 0 15px;
 }
 
 /* العداد */
@@ -55,7 +54,7 @@ body {
     font-weight: bold;
     font-size: 18px;
     padding: 14px 40px;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .download a.disabled {
@@ -65,32 +64,14 @@ body {
 
 /* الجوال */
 @media (max-width: 768px) {
-    .content {
-        max-width: 95%;
+    .ad-container, .content {
+        width: 95%; /* أصغر للجوال */
     }
 
     .download a {
         font-size: 5vw;
         padding: 3vw 5vw;
-        margin-top: 10px; /* رفع الزر قليلاً فوق أسفل الإعلان */
-    }
-}
-
-/* الكمبيوتر */
-@media (min-width: 1024px) {
-    .content {
-        max-width: 1200px; /* أكبر حاوية للكمبيوتر */
-        margin: 30px auto;
-    }
-
-    .ad img {
-        max-height: 60vh; /* الإعلان كبير وواضح */
-    }
-
-    .download a {
-        font-size: 20px;
-        padding: 16px 50px;
-        margin-top: 15px;
+        margin-top: 10px;
     }
 }
 </style>
@@ -100,9 +81,11 @@ body {
 
 <div class="page">
 
-<a class="ad" href="https://lirat.store/r/F0H74" target="_blank">
-    <img src="https://i.postimg.cc/hG0dZ1nS/FB-IMG-1768594887137.jpg" alt="إعلان">
-</a>
+<div class="ad-container">
+    <a href="https://lirat.store/r/F0H74" target="_blank">
+        <img src="https://i.postimg.cc/hG0dZ1nS/FB-IMG-1768594887137.jpg" alt="إعلان">
+    </a>
+</div>
 
 <div class="content">
     <div id="countdown">
