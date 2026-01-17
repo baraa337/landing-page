@@ -22,22 +22,22 @@ html, body {
 
 /* الإعلان */
 .ad-container {
-    width: 90vw;
+    width: 95vw;
+    height: 70vh; /* الكمبيوتر يغطي 70% ارتفاع الشاشة */
     max-width: 1200px;
     margin-top: 20px;
 }
 
 .ad-container img {
     width: 100%;
-    height: auto;
-    max-height: 50vh; /* يغطي نصف الشاشة تقريبا */
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover; /* الصورة تغطي كامل الحاوية */
     border-radius: 12px;
 }
 
 /* محتوى التحميل */
 .content {
-    width: 90vw;
+    width: 95vw;
     max-width: 1200px;
     margin-top: 20px;
     text-align: center;
@@ -69,12 +69,8 @@ html, body {
 
 /* الجوال */
 @media (max-width: 768px) {
-    .ad-container, .content {
-        width: 95vw;
-    }
-
-    .ad-container img {
-        max-height: 40vh;
+    .ad-container {
+        height: 50vh; /* الجوال يغطي نصف الشاشة */
     }
 
     .download a {
