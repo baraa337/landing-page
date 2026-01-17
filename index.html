@@ -21,7 +21,7 @@ body {
 /* الإعلان */
 .ad {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .ad img {
@@ -33,8 +33,8 @@ body {
 
 /* محتوى التحميل */
 .content {
-    margin: 15px auto;
-    padding: 0 10px;
+    margin: 20px auto;
+    padding: 0 15px;
 }
 
 /* العداد */
@@ -63,17 +63,7 @@ body {
 /* الجوال */
 @media (max-width: 768px) {
     .content {
-        max-width: 95%;
-    }
-
-    .download {
-        position: fixed;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 90%;
-        text-align: center;
-        z-index: 1000;
+        max-width: 95%;  /* مناسب للجوال */
     }
 
     .download a {
@@ -85,19 +75,13 @@ body {
 /* الكمبيوتر */
 @media (min-width: 1024px) {
     .content {
-        max-width: 1000px;  /* أكبر قليلاً من السابق */
-        margin: 20px auto;
+        max-width: 1000px; /* أعرض على الكمبيوتر */
+        margin: 30px auto;
     }
 
     .ad img {
-        max-height: 70vh;   /* الإعلان أكبر، لكن لا يملأ الشاشة بالكامل */
+        max-height: 70vh;   /* الإعلان أكبر لكن لا يملأ الشاشة بالكامل */
         object-fit: contain;
-    }
-
-    .download {
-        position: static; /* الزر تحت الإعلان */
-        transform: none;
-        width: auto;
     }
 }
 </style>
