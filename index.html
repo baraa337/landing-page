@@ -1,1 +1,91 @@
-index.html
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تحميل الملف</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #ffffff;
+}
+
+.ad img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+#countdown {
+    font-size: 22px;
+    margin: 25px 0;
+    color: #333;
+}
+
+.download a {
+    display: inline-block;
+    padding: 15px 35px;
+    font-size: 18px;
+    background: #007bff;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.download a.disabled {
+    background: #999;
+    pointer-events: none;
+}
+</style>
+
+</head>
+<body>
+
+<!-- الإعلان -->
+<div class="ad">
+    <a id="adLink" href="https://lirat.store/r/F0H74" target="_blank">
+        <img src="https://i.postimg.cc/hG0dZ1nS/FB-IMG-1768594887137.jpg" alt="إعلان">
+    </a>
+</div>
+
+<!-- العد التنازلي -->
+<div id="countdown">انتظر <span id="timer">5</span> ثواني</div>
+
+<!-- زر التحميل -->
+<div class="download">
+    <a id="downloadBtn"
+       href="https://www.mediafire.com/file/x9h2bk5y7rsdxw9/PSD.7z/file"
+       class="disabled"
+       target="_blank">
+       تحميل الملف
+    </a>
+</div>
+
+<script>
+window.addEventListener("load", function () {
+    window.open("https://lirat.store/r/F0H74", "_blank");
+});
+
+let timeLeft = 5;
+const timerEl = document.getElementById("timer");
+const downloadBtn = document.getElementById("downloadBtn");
+
+const countdown = setInterval(() => {
+    timeLeft--;
+    timerEl.textContent = timeLeft;
+    if (timeLeft <= 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").style.display = "none";
+        downloadBtn.classList.remove("disabled");
+    }
+}, 1000);
+</script>
+
+</body>
+</html>
+update links
