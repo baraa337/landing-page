@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحة التحميل الآمنة</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <title>بوابة التحميل | الآمنة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2563eb; /* أزرق عصري */
-            --secondary-color: #10b981; /* أخضر للتحميل */
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
+            --primary: #2563eb;
+            --success: #16a34a;
+            --bg-gray: #f1f5f9;
+            --white: #ffffff;
+            --text-dark: #0f172a;
+            --border: #e2e8f0;
         }
 
         * {
@@ -22,211 +22,218 @@
         }
 
         body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-gray);
+            color: var(--text-dark);
             line-height: 1.6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            overflow-x: hidden;
         }
 
-        /* الحاوية المركزية */
-        .wrapper {
+        /* رأس الصفحة - Header */
+        header {
+            background-color: var(--white);
+            padding: 1rem 5%;
+            border-bottom: 1px solid var(--border);
+            text-align: right;
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* الحاوية الرئيسية المتجاوبة */
+        .main-content {
+            width: 95%;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            gap: 2rem;
+        }
+
+        /* قسم الإعلان - Responsive Ad Banner */
+        .ad-wrapper {
             width: 100%;
-            max-width: 800px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        /* حاوية الإعلان */
-        .ad-section {
-            background: var(--card-bg);
-            border-radius: 16px;
+            background: var(--white);
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
         }
 
-        .ad-section:hover {
-            transform: translateY(-5px);
-        }
-
-        .ad-section img {
+        .ad-wrapper img {
             width: 100%;
             height: auto;
             display: block;
-            object-fit: cover;
-            max-height: 400px;
+            transition: opacity 0.3s;
         }
 
-        /* حاوية محتوى التحميل */
-        .download-card {
-            background: var(--card-bg);
-            padding: 40px 20px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        .ad-wrapper img:hover {
+            opacity: 0.95;
         }
 
-        .file-icon {
-            font-size: 50px;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-
-        h1 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--text-main);
-        }
-
-        /* العداد */
-        .timer-wrapper {
-            margin: 20px 0;
-            padding: 15px;
-            background: #eff6ff;
+        /* قسم التحميل - Download Area */
+        .download-box {
+            background: var(--white);
+            padding: 2.5rem 1.5rem;
             border-radius: 12px;
-            display: inline-block;
-            min-width: 250px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .file-info {
+            margin-bottom: 2rem;
+        }
+
+        .file-info h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        /* حالة الانتظار */
+        .status-container {
+            background: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .timer-text {
+            font-size: 1.1rem;
+            color: #475569;
         }
 
         #timer {
             font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--primary-color);
+            color: var(--primary);
+            font-size: 1.3rem;
         }
 
-        /* زر التحميل */
-        .btn-download {
+        /* الزر الاحترافي */
+        .btn-main {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            background-color: var(--secondary-color);
-            color: white;
+            background-color: var(--success);
+            color: var(--white);
             text-decoration: none;
-            padding: 16px 40px;
-            border-radius: 50px;
-            font-weight: 700;
+            padding: 1rem 3rem;
+            border-radius: 8px;
+            font-weight: 600;
             font-size: 1.1rem;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             width: 100%;
-            max-width: 300px;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            max-width: 400px;
+            cursor: pointer;
+            box-shadow: 0 10px 15px -3px rgba(22, 163, 74, 0.2);
         }
 
-        .btn-download:hover {
-            background-color: #059669;
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        .btn-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(22, 163, 74, 0.25);
         }
 
-        .btn-download.disabled {
-            background-color: #cbd5e1;
-            color: #94a3b8;
+        .btn-main.disabled {
+            background-color: #94a3b8;
             cursor: not-allowed;
-            transform: none;
             box-shadow: none;
+            transform: none;
         }
 
-        /* تذييل الصفحة */
-        .footer-note {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 20px;
+        /* فوتر بسيط */
+        footer {
+            margin-top: 4rem;
+            padding: 2rem;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
         }
 
-        /* استعلامات الوسائط (Media Queries) للهواتف */
-        @media (max-width: 600px) {
-            body {
-                padding: 15px;
+        /* ميديا كويري للجوال */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 5%;
+                margin-bottom: 1rem;
             }
-            
-            .download-card {
-                padding: 30px 15px;
+            .main-content {
+                gap: 1.5rem;
             }
-
-            h1 {
-                font-size: 1.25rem;
-            }
-
-            .btn-download {
-                width: 100%;
-                font-size: 1rem;
+            .download-box {
+                padding: 1.5rem 1rem;
             }
         }
     </style>
 </head>
 <body>
 
-<div class="wrapper">
-    <div class="ad-section">
-        <a href="https://lirat.store/r/F0H74" target="_blank">
-            <img src="https://i.postimg.cc/hG0dZ1nS/FB-IMG-1768594887137.jpg" alt="إعلان ترويجي">
-        </a>
-    </div>
+    <header>
+        <div class="logo">تحميل بلس +</div>
+    </header>
 
-    <div class="download-card">
-        <div class="file-icon">📁</div>
-        <h1>جاهز لتحميل ملفك؟</h1>
-        <p style="color: var(--text-muted);">رابط التحميل سيكون متاحاً بعد قليل</p>
-
-        <div class="timer-wrapper" id="timer-container">
-            <span>سيظهر الرابط خلال: </span>
-            <span id="timer">5</span> ثانية
-        </div>
-
-        <div class="download-action">
-            <a id="downloadBtn" 
-               href="https://a.top4top.io/f_cJDbBG5nUxhS-DQrD6_c8Q/1768838167/36695w5lu0.rar" 
-               class="btn-download disabled">
-               <span>📥</span> تحميل الملف الآن
+    <main class="main-content">
+        
+        <div class="ad-wrapper">
+            <a href="https://lirat.store/r/F0H74" target="_blank">
+                <img src="https://i.postimg.cc/hG0dZ1nS/FB-IMG-1768594887137.jpg" alt="برومو">
             </a>
         </div>
 
-        <p class="footer-note">نحن نقوم بفحص الروابط لضمان أمانك بنسبة 100%.</p>
-    </div>
-</div>
+        <section class="download-box">
+            <div class="file-info">
+                <h1>رابط تحميل الملف أصبح جاهزاً تقريباً</h1>
+                <p style="color: #64748b;">تأكد من أنك تتبع التعليمات الصحيحة لتجنب المشاكل</p>
+            </div>
 
-<script>
-    let timeLeft = 5;
-    const timerElement = document.getElementById("timer");
-    const downloadBtn = document.getElementById("downloadBtn");
-    const timerContainer = document.getElementById("timer-container");
+            <div class="status-container" id="status-box">
+                <p class="timer-text">سيتم تفعيل الرابط خلال <span id="timer">5</span> ثانية...</p>
+            </div>
 
-    const countdown = setInterval(() => {
-        timeLeft--;
-        timerElement.textContent = timeLeft;
+            <a id="downloadBtn" 
+               href="https://a.top4top.io/f_cJDbBG5nUxhS-DQrD6_c8Q/1768838167/36695w5lu0.rar" 
+               class="btn-main disabled">
+               ⬇️ تحميل الملف الآن
+            </a>
+        </section>
 
-        if (timeLeft <= 0) {
-            clearInterval(countdown);
-            // تحسين المظهر عند انتهاء الوقت
-            timerContainer.style.background = "#f0fdf4";
-            timerContainer.innerHTML = "<span style='color: #10b981; font-weight: bold;'>✅ الرابط جاهز للتحميل الآن!</span>";
-            
-            // تفعيل الزر
-            downloadBtn.classList.remove("disabled");
-            downloadBtn.style.animation = "pulse 2s infinite";
-        }
-    }, 1000);
+    </main>
 
-    // إضافة حركة نبض بسيطة للزر عند جاهزيته
-    const style = document.createElement('style');
-    style.innerHTML = `
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-            100% { transform: scale(1); }
-        }
-    `;
-    document.head.appendChild(style);
-</script>
+    <footer>
+        <p>&copy; 2024 جميع الحقوق محفوظة - بوابة التحميل الآمنة</p>
+    </footer>
+
+    <script>
+        let count = 5;
+        const timerSpan = document.getElementById('timer');
+        const btn = document.getElementById('downloadBtn');
+        const statusBox = document.getElementById('status-box');
+
+        const countdown = setInterval(() => {
+            count--;
+            timerSpan.textContent = count;
+
+            if (count <= 0) {
+                clearInterval(countdown);
+                statusBox.innerHTML = "<span style='color: #059669; font-weight: bold;'>✅ الرابط جاهز! يمكنك التحميل الآن بنقرة واحدة.</span>";
+                btn.classList.remove('disabled');
+                
+                // إضافة نبض خفيف للفت الانتباه
+                btn.style.animation = "pulse 1.5s infinite linear";
+            }
+        }, 1000);
+
+        // تعريف أنيميشن النبض برمجياً
+        const sheet = document.styleSheets[0];
+        sheet.insertRule(`
+            @keyframes pulse {
+                0% { opacity: 1; }
+                50% { opacity: 0.85; }
+                100% { opacity: 1; }
+            }
+        `, sheet.cssRules.length);
+    </script>
 
 </body>
 </html>
