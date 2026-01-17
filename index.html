@@ -12,6 +12,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
 }
 
 /* الإعلان */
@@ -23,8 +24,9 @@ body {
 
 .ad-container img {
     width: 100%;
-    height: auto;        /* يحافظ على نسبة الصورة */
-    object-fit: contain;  /* يظهر كامل الصورة بدون قص */
+    height: auto;         /* يحافظ على نسبة الصورة */
+    max-height: 70vh;      /* الحد الأقصى للكمبيوتر */
+    object-fit: contain;   /* يظهر كامل الصورة بدون قص */
     border-radius: 12px;
 }
 
@@ -32,7 +34,7 @@ body {
 .content {
     width: 95%;
     max-width: 1200px;
-    margin-top: 15px;
+    margin-top: 25px;
     text-align: center;
 }
 
@@ -52,7 +54,7 @@ body {
     font-weight: bold;
     font-size: 18px;
     padding: 14px 50px;
-    margin-top: 50px; /* مسافة مناسبة على الكمبيوتر */
+    margin-top: 50px; /* مسافة مناسبة أسفل الإعلان */
 }
 
 .download a.disabled {
@@ -68,13 +70,14 @@ body {
 
     .ad-container img {
         width: 100%;
-        height: auto; 
+        height: auto;      /* للجوال، الإعلان متناسب بدون قص */
+        max-height: 50vh;   /* نصف ارتفاع الشاشة للجوال */
     }
 
     .download a {
         font-size: 5vw;
         padding: 3vw 5vw;
-        margin-top: 25px; /* مسافة مناسبة على الجوال */
+        margin-top: 25px;
     }
 }
 </style>
