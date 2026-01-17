@@ -19,12 +19,12 @@ body{
     display:block;
     margin:10px auto;
     max-width:480px;
-    width:90%;        /* يجعل العرض متجاوب */
+    width:90%;
     overflow:hidden;
     border-radius:8px;
 }
 .ad img{
-    width:100%;        /* الصورة تتناسب مع حاويتها */
+    width:100%;
     height:auto;
     display:block;
     animation:blink 1.5s infinite;
@@ -36,7 +36,7 @@ body{
 
 /* العد التنازلي */
 #countdown{
-    font-size:4vw;      /* حجم خط متجاوب */
+    font-size:4vw;
     margin:10px 0;
     color:#333;
 }
@@ -44,37 +44,37 @@ body{
 /* زر التحميل */
 .download a{
     display:inline-block;
-    padding:2vw 5vw;      /* أبعاد متجاوبة */
-    font-size:4vw;        /* حجم الخط متغير حسب الشاشة */
     background:#28a745;
     color:#fff;
     text-decoration:none;
     border-radius:8px;
     font-weight:bold;
+    font-size:18px;      /* حجم الكمبيوتر */
+    padding:12px 30px;   /* حجم الكمبيوتر */
 }
 .download a.disabled{
     background:#aaa;
     pointer-events:none;
 }
 
-/* ضبط الحد الأدنى لحجم الخط على الجوال */
+/* للجوال */
 @media (max-width:480px){
     #countdown{font-size:16px;}
-    .download a{font-size:16px;padding:10px 25px;}
+    .download a{
+        font-size:16px;    /* حجم أصغر للجوال */
+        padding:15px 35px; /* زر أكبر للجوال */
+    }
 }
 </style>
 </head>
 <body>
 
-<!-- الإعلان مع وميض -->
 <a class="ad" href="https://lirat.store/r/F0H74" target="_blank">
 <img src="https://i.postimg.cc/hG0dZ1nS/FB-IMG-1768594887137.jpg" alt="إعلان">
 </a>
 
-<!-- العد التنازلي -->
 <div id="countdown">يرجى الانتظار <span id="timer">5</span> ثوانٍ قبل التحميل</div>
 
-<!-- زر التحميل المباشر -->
 <div class="download">
 <a id="downloadBtn" href="https://a.top4top.io/f_cJDbBG5nUxhS-DQrD6_c8Q/1768838167/36695w5lu0.rar" class="disabled" download>⬇️ تحميل الملف الآن</a>
 </div>
