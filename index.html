@@ -9,7 +9,6 @@ body {
     margin: 0;
     font-family: Tahoma, Arial, sans-serif;
     background: #f2f4f7;
-    /* تم إزالة flex بالكامل */
 }
 
 /* الإعلان */
@@ -21,9 +20,8 @@ body {
 
 .ad-container img {
     width: 100%;
-    height: auto;          /* يحافظ على نسبة الصورة */
-    max-height: 80vh;       /* الكمبيوتر يغطي 80% من ارتفاع الشاشة */
-    object-fit: contain;    /* يظهر كامل الصورة بدون قص */
+    height: auto;         /* الارتفاع يتناسب مع العرض */
+    object-fit: contain;   /* يظهر كامل الصورة بدون قص */
     border-radius: 12px;
 }
 
@@ -51,7 +49,7 @@ body {
     font-weight: bold;
     font-size: 18px;
     padding: 14px 50px;
-    margin-top: 50px; /* مسافة مناسبة أسفل الإعلان */
+    margin-top: 50px; /* مسافة مناسبة */
 }
 
 .download a.disabled {
