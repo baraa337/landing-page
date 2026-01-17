@@ -22,12 +22,13 @@ body {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    height: 70vh; /* يغطي 70% من ارتفاع الشاشة على الكمبيوتر */
 }
 
 .ad-container img {
-    width: 100%;        /* يغطي العرض بالكامل */
-    height: auto;       /* الارتفاع يتناسب مع العرض */
-    object-fit: contain; /* يظهر كامل الصورة بدون قص */
+    width: 100%;
+    height: 100%;       /* يغطي كامل الحاوية */
+    object-fit: contain; /* الصورة كاملة بدون قص */
     border-radius: 12px;
 }
 
@@ -35,7 +36,7 @@ body {
 .content {
     width: 90%;
     max-width: 1200px;
-    margin: 30px auto 0 auto;
+    margin: 20px auto 0 auto;
     text-align: center;
 }
 
@@ -65,12 +66,8 @@ body {
 
 /* الجوال */
 @media (max-width: 768px) {
-    .ad-container, .content {
-        width: 95%;
-    }
-
-    .ad-container img {
-        max-height: 50vh;  /* نصف ارتفاع الشاشة للجوال */
+    .ad-container {
+        height: 50vh;   /* نصف الشاشة على الجوال */
     }
 
     .download a {
