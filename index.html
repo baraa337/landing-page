@@ -12,46 +12,45 @@ body {
     background: #f2f4f7;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     min-height: 100vh;
 }
 
 /* الحاوية الرئيسية */
 .container {
     width: 90%;
-    max-width: 800px; /* مناسب لجميع الشاشات */
-    margin: 20px auto;
-    box-sizing: border-box;
+    max-width: 700px;   /* مناسب للكمبيوتر */
     text-align: center;
+    box-sizing: border-box;
 }
 
 /* الإعلان */
 .ad {
     width: 100%;
+    position: relative;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 12px;
+    height: 0;
+    padding-bottom: 56.25%; /* نسبة 16:9 للحفاظ على الصورة كاملة ومتجاوبة */
     margin-bottom: 20px;
-    height: 300px; /* ارتفاع مناسب للكمبيوتر والجوال */
 }
 .ad img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;  /* تغطي الصورة كامل الإعلان بدون تشويه */
-    display: block;
+    object-fit: cover; /* تغطي كامل الحاوية */
     animation: blink 1.5s infinite;
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
-/* وميض */
-@keyframes blink {
-    0%, 100% {opacity: 1;}
-    50% {opacity: 0.7;}
-}
+@keyframes blink {0%,100%{opacity:1;}50%{opacity:0.7;}}
 
 /* العد التنازلي */
 #countdown {
     font-size: 20px;
-    margin: 15px 0;
+    margin: 10px 0;
     color: #333;
 }
 
@@ -64,7 +63,7 @@ body {
     border-radius: 10px;
     font-weight: bold;
     font-size: 18px;
-    padding: 12px 30px;
+    padding: 12px 35px;
     transition: background 0.3s;
 }
 .download a:hover {
@@ -76,19 +75,13 @@ body {
 }
 
 /* متجاوب للجوال */
-@media (max-width:768px) {
-    .container { max-width: 90%; }
-    #countdown { font-size: 18px; }
-    .download a {
-        font-size: 5vw;
-        padding: 3vw 10vw;
-    }
-    .ad { height: 200px; } /* أصغر قليلاً للجوال */
+@media (max-width:768px){
+    #countdown {font-size: 18px;}
+    .download a { font-size: 5vw; padding: 3vw 10vw; }
 }
 
-@media (max-width:480px) {
-    #countdown { font-size: 16px; }
-    .ad { height: 180px; } /* مناسب للجوال الصغير */
+@media (max-width:480px){
+    #countdown {font-size: 16px;}
 }
 </style>
 </head>
@@ -120,7 +113,7 @@ const c = setInterval(() => {
         document.getElementById("countdown").style.display = "none";
         btn.classList.remove("disabled");
     }
-}, 1000);
+},1000);
 </script>
 
 </body>
