@@ -12,20 +12,22 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start; /* يبدأ المحتوى من الأعلى */
+    min-height: 100vh;
 }
 
 /* الإعلان */
 .ad-container {
-    width: 90%;          /* يغطي غالبية العرض */
+    width: 90%;
     max-width: 1200px;
     margin: 20px auto;
 }
 
 .ad-container img {
     width: 100%;
-    height: auto;             /* يحافظ على نسبة الصورة */
-    max-height: 80vh;          /* الكمبيوتر يغطي 80% تقريبًا من ارتفاع الشاشة */
-    object-fit: contain;      /* يظهر كامل الصورة بدون قص */
+    height: auto;
+    max-height: 80vh;  /* الإعلان يغطي 80% من ارتفاع الشاشة على الكمبيوتر */
+    object-fit: contain;
     border-radius: 12px;
 }
 
@@ -68,7 +70,7 @@ body {
     }
 
     .ad-container img {
-        max-height: 50vh;   /* نصف ارتفاع الشاشة للجوال */
+        max-height: 50vh;  /* الإعلان يغطي نصف الشاشة */
     }
 
     .download a {
