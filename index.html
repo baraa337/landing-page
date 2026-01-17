@@ -6,32 +6,28 @@
 <title>تحميل الملف</title>
 
 <style>
-html, body {
+body {
     margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
     font-family: Tahoma, Arial, sans-serif;
     background: #f2f4f7;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    box-sizing: border-box;
+    min-height: 100vh;
 }
 
 /* الإعلان */
 .ad-container {
     width: 95vw;
-    height: 70vh; /* الكمبيوتر يغطي 70% ارتفاع الشاشة */
     max-width: 1200px;
     margin-top: 20px;
 }
 
 .ad-container img {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* الصورة تغطي كامل الحاوية */
+    height: auto;        /* يحافظ على نسبة الصورة */
+    object-fit: contain;  /* لا يقص الصورة */
     border-radius: 12px;
 }
 
@@ -70,7 +66,7 @@ html, body {
 /* الجوال */
 @media (max-width: 768px) {
     .ad-container {
-        height: 50vh; /* الجوال يغطي نصف الشاشة */
+        width: 95vw;
     }
 
     .download a {
