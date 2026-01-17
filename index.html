@@ -21,7 +21,7 @@ body {
 /* الإعلان */
 .ad {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .ad img {
@@ -53,6 +53,7 @@ body {
     font-weight: bold;
     font-size: 18px;
     padding: 14px 40px;
+    margin-top: 10px;
 }
 
 .download a.disabled {
@@ -63,24 +64,25 @@ body {
 /* الجوال */
 @media (max-width: 768px) {
     .content {
-        max-width: 95%;  /* مناسب للجوال */
+        max-width: 95%;
     }
 
     .download a {
         font-size: 5vw;
         padding: 3vw 5vw;
+        margin-top: 5px; /* رفع الزر قليلاً فوق أسفل الشاشة */
     }
 }
 
 /* الكمبيوتر */
 @media (min-width: 1024px) {
     .content {
-        max-width: 1000px; /* أعرض على الكمبيوتر */
+        max-width: 1200px; /* أعرض من السابق */
         margin: 30px auto;
     }
 
     .ad img {
-        max-height: 70vh;   /* الإعلان أكبر لكن لا يملأ الشاشة بالكامل */
+        max-height: 75vh;   /* الإعلان أكبر وواضح */
         object-fit: contain;
     }
 }
