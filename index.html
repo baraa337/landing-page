@@ -5,22 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>تحميل الملف</title>
 <style>
+/* الجسم */
 body {
     margin: 0;
     font-family: Tahoma, Arial, sans-serif;
     background: #f2f4f7;
 }
 
+/* الحاوية الرئيسية تغطي كامل الشاشة على الكمبيوتر */
+.main-container {
+    min-height: 100vh;  /* يملأ الشاشة على الكمبيوتر */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* يبدأ المحتوى من الأعلى */
+    padding: 20px 0;
+}
+
 /* الإعلان */
 .ad-container {
     width: 90%;
     max-width: 1200px;
-    margin: 20px auto;
 }
 
 .ad-container img {
     width: 100%;
-    height: auto;         /* الارتفاع يتناسب مع العرض */
+    height: auto;          /* الارتفاع يتناسب مع العرض */
     object-fit: contain;   /* يظهر كامل الصورة بدون قص */
     border-radius: 12px;
 }
@@ -49,7 +59,7 @@ body {
     font-weight: bold;
     font-size: 18px;
     padding: 14px 50px;
-    margin-top: 50px; /* مسافة مناسبة */
+    margin-top: 50px; /* مسافة مناسبة أسفل الإعلان */
 }
 
 .download a.disabled {
@@ -78,25 +88,29 @@ body {
 
 <body>
 
-<div class="ad-container">
-    <a href="https://lirat.store/r/F0H74" target="_blank">
-        <img src="https://i.postimg.cc/hG0dZ1nS/FB-IMG-1768594887137.jpg" alt="إعلان">
-    </a>
-</div>
+<div class="main-container">
 
-<div class="content">
-    <div id="countdown">
-        يرجى الانتظار <span id="timer">5</span> ثوانٍ قبل التحميل
-    </div>
-
-    <div class="download">
-        <a id="downloadBtn"
-           href="https://a.top4top.io/f_cJDbBG5nUxhS-DQrD6_c8Q/1768838167/36695w5lu0.rar"
-           class="disabled"
-           download>
-           ⬇️ تحميل الملف الآن
+    <div class="ad-container">
+        <a href="https://lirat.store/r/F0H74" target="_blank">
+            <img src="https://i.postimg.cc/hG0dZ1nS/FB-IMG-1768594887137.jpg" alt="إعلان">
         </a>
     </div>
+
+    <div class="content">
+        <div id="countdown">
+            يرجى الانتظار <span id="timer">5</span> ثوانٍ قبل التحميل
+        </div>
+
+        <div class="download">
+            <a id="downloadBtn"
+               href="https://a.top4top.io/f_cJDbBG5nUxhS-DQrD6_c8Q/1768838167/36695w5lu0.rar"
+               class="disabled"
+               download>
+               ⬇️ تحميل الملف الآن
+            </a>
+        </div>
+    </div>
+
 </div>
 
 <script>
