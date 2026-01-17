@@ -20,23 +20,23 @@ body {
 
 /* الإعلان */
 .ad-container {
-    width: 85%;
-    max-width: 1200px; /* أكبر عرض للكمبيوتر */
+    width: 90%;         /* يغطي 90% من الشاشة على الكمبيوتر */
+    max-width: none;    /* لا حدود للحجم */
     margin: 20px auto;
 }
 
 .ad-container img {
     width: 100%;
     height: auto;
-    max-height: 50vh; /* يغطي نصف الشاشة تقريبًا */
+    max-height: 80vh; /* الإعلان كبير وواضح على الكمبيوتر */
     object-fit: contain;
     border-radius: 12px;
 }
 
 /* محتوى التحميل */
 .content {
-    width: 85%;
-    max-width: 1200px;
+    width: 90%;
+    max-width: none;
     margin: 20px auto;
 }
 
@@ -67,7 +67,7 @@ body {
 /* الجوال */
 @media (max-width: 768px) {
     .ad-container, .content {
-        width: 95%; /* أصغر للجوال */
+        width: 95%;
     }
 
     .ad-container img {
