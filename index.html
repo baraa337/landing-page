@@ -14,9 +14,9 @@ body {
 
 /* الحاوية */
 .container {
-    width: 94%;
-    max-width: 760px;
-    margin: 20px auto;
+    width: 95%;
+    max-width: 900px;     /* أكبر من قبل */
+    margin: 30px auto;
     text-align: center;
 }
 
@@ -24,15 +24,15 @@ body {
 .ad {
     display: block;
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 /* صورة الإعلان */
 .ad img {
     width: 100%;
-    height: auto;          /* صورة كاملة بدون قص */
+    height: auto;
     display: block;
-    border-radius: 12px;
+    border-radius: 14px;
     animation: blink 1.5s infinite;
 }
 
@@ -45,13 +45,13 @@ body {
 /* العداد */
 #countdown {
     font-size: 18px;
-    margin: 10px 0;
+    margin: 12px 0;
     color: #333;
 }
 
 /* زر التحميل */
 .download {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .download a {
@@ -59,10 +59,10 @@ body {
     background: #28a745;
     color: #fff;
     text-decoration: none;
-    border-radius: 10px;
+    border-radius: 12px;
     font-weight: bold;
-    font-size: 17px;
-    padding: 12px 34px;
+    font-size: 18px;
+    padding: 14px 40px;
 }
 
 .download a.disabled {
@@ -72,17 +72,29 @@ body {
 
 /* الجوال */
 @media (max-width: 768px) {
-    #countdown { font-size: 16px; }
+    .container {
+        max-width: 100%;
+        margin-top: 15px;
+    }
+
+    #countdown {
+        font-size: 16px;
+    }
+
     .download a {
         font-size: 4.5vw;
         padding: 3vw 10vw;
     }
 }
 
-/* الكمبيوتر فقط: منع الطول الزائد */
-@media (min-width: 1024px) {
+/* الكمبيوتر الكبير */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1100px;   /* الصفحة أعرض على الكمبيوتر */
+    }
+
     .ad img {
-        max-height: 60vh;   /* الصورة لا تتجاوز 60% من الشاشة */
+        max-height: 65vh;    /* صورة مريحة بدون مبالغة */
         object-fit: contain;
     }
 }
