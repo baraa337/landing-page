@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>تحميل الملف</title>
-
 <style>
 body {
     margin: 0;
@@ -13,29 +12,27 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
 }
 
 /* الإعلان */
 .ad-container {
-    width: 95vw;
+    width: 95%;
     max-width: 1200px;
-    margin-top: 20px;
+    margin: 20px auto;
 }
 
 .ad-container img {
     width: 100%;
     height: auto;        /* يحافظ على نسبة الصورة */
-    object-fit: contain;  /* لا يقص الصورة */
+    object-fit: contain;  /* يظهر كامل الصورة بدون قص */
     border-radius: 12px;
 }
 
 /* محتوى التحميل */
 .content {
-    width: 95vw;
+    width: 95%;
     max-width: 1200px;
-    margin-top: 20px;
+    margin-top: 15px;
     text-align: center;
 }
 
@@ -55,7 +52,7 @@ body {
     font-weight: bold;
     font-size: 18px;
     padding: 14px 50px;
-    margin-top: 15px;
+    margin-top: 50px; /* مسافة مناسبة على الكمبيوتر */
 }
 
 .download a.disabled {
@@ -65,14 +62,19 @@ body {
 
 /* الجوال */
 @media (max-width: 768px) {
-    .ad-container {
-        width: 95vw;
+    .ad-container, .content {
+        width: 95%;
+    }
+
+    .ad-container img {
+        width: 100%;
+        height: auto; 
     }
 
     .download a {
         font-size: 5vw;
         padding: 3vw 5vw;
-        margin-top: 10px;
+        margin-top: 25px; /* مسافة مناسبة على الجوال */
     }
 }
 </style>
