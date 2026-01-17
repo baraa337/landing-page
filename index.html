@@ -16,8 +16,8 @@ body {
 /* الحاوية الرئيسية */
 .container {
     width: 90%;
-    max-width: 1200px;   /* أكبر عرض على الكمبيوتر */
-    margin: 30px auto;   /* مركزي تلقائي */
+    max-width: 600px;  /* عرض متوسط على الكمبيوتر */
+    margin: 20px auto;
     box-sizing: border-box;
 }
 
@@ -44,8 +44,8 @@ body {
 
 /* العد التنازلي */
 #countdown {
-    font-size: 24px;     /* أكبر على الكمبيوتر */
-    margin: 20px 0;
+    font-size: 18px;   /* حجم مناسب على الكمبيوتر */
+    margin: 15px 0;
     color: #333;
 }
 
@@ -57,8 +57,8 @@ body {
     text-decoration: none;
     border-radius: 10px;
     font-weight: bold;
-    font-size: 20px;    /* مناسب على الكمبيوتر */
-    padding: 12px 35px;
+    font-size: 16px;     /* حجم مناسب على الكمبيوتر */
+    padding: 12px 30px;
     transition: background 0.3s;
 }
 .download a:hover {
@@ -71,7 +71,7 @@ body {
 
 /* للجوال */
 @media (max-width:768px) {
-    #countdown {font-size: 20px;}
+    #countdown {font-size: 16px;}
     .download a {
         font-size: 4vw;
         padding: 3vw 10vw;
@@ -80,7 +80,7 @@ body {
 }
 
 @media (max-width:480px) {
-    #countdown {font-size: 18px;}
+    #countdown {font-size: 14px;}
 }
 </style>
 </head>
@@ -104,7 +104,7 @@ body {
 let t = 5;
 const timerEl = document.getElementById("timer");
 const btn = document.getElementById("downloadBtn");
-const c = setInterval(()=>{
+const c = setInterval(() => {
     t--;
     timerEl.textContent = t;
     if(t <= 0){
