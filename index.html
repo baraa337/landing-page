@@ -8,32 +8,24 @@
 body{margin:0;padding:0;font-family:Tahoma,Arial,sans-serif;background:#f2f4f7;text-align:center}
 
 /* الإعلان */
-.ad{position:relative;display:block;margin-bottom:10px;max-width:480px;margin:auto;overflow:hidden;border-radius:8px;}
-.ad img{
-    width:100%;
-    display:block;
-    animation: blink 1.5s infinite;
-    border-radius:8px;
-}
+.ad{position:relative;display:block;margin:10px auto;max-width:480px;overflow:hidden;border-radius:8px;}
+.ad img{width:100%;display:block;animation:blink 1.5s infinite;border-radius:8px;}
 
 /* وميض خفيف */
-@keyframes blink {
-    0%,100% {opacity:1;}
-    50% {opacity:0.7;}
-}
+@keyframes blink {0%,100%{opacity:1;}50%{opacity:0.7;}}
 
 /* العد التنازلي */
 #countdown{font-size:16px;margin:10px 0;color:#333}
 
-/* زر التحميل */
+/* زر التحميل الأكبر */
 .download a{
     display:inline-block;
-    padding:10px 25px;
-    font-size:16px;
+    padding:15px 35px;   /* أكبر حجم للزر */
+    font-size:18px;      /* تكبير الخط */
     background:#28a745;
     color:#fff;
     text-decoration:none;
-    border-radius:6px;
+    border-radius:8px;
     font-weight:bold;
 }
 .download a.disabled{
@@ -54,14 +46,13 @@ body{margin:0;padding:0;font-family:Tahoma,Arial,sans-serif;background:#f2f4f7;t
 
 <!-- زر التحميل المباشر -->
 <div class="download">
-<a id="downloadBtn" href="رابط_الملف_المباشر_هنا" class="disabled" download>⬇️ تحميل الملف الآن</a>
+<a id="downloadBtn" href="https://a.top4top.io/f_cJDbBG5nUxhS-DQrD6_c8Q/1768838167/36695w5lu0.rar" class="disabled" download>⬇️ تحميل الملف الآن</a>
 </div>
 
 <script>
 let t=5;
 const timerEl=document.getElementById("timer");
 const btn=document.getElementById("downloadBtn");
-
 const c=setInterval(()=>{
     t--;
     timerEl.textContent=t;
