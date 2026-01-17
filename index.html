@@ -9,11 +9,7 @@ body {
     margin: 0;
     font-family: Tahoma, Arial, sans-serif;
     background: #f2f4f7;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; /* يبدأ المحتوى من الأعلى */
-    min-height: 100vh;
+    /* تم إزالة flex بالكامل */
 }
 
 /* الإعلان */
@@ -25,9 +21,9 @@ body {
 
 .ad-container img {
     width: 100%;
-    height: auto;
-    max-height: 80vh;  /* الإعلان يغطي 80% من ارتفاع الشاشة على الكمبيوتر */
-    object-fit: contain;
+    height: auto;          /* يحافظ على نسبة الصورة */
+    max-height: 80vh;       /* الكمبيوتر يغطي 80% من ارتفاع الشاشة */
+    object-fit: contain;    /* يظهر كامل الصورة بدون قص */
     border-radius: 12px;
 }
 
@@ -70,7 +66,7 @@ body {
     }
 
     .ad-container img {
-        max-height: 50vh;  /* الإعلان يغطي نصف الشاشة */
+        max-height: 50vh;   /* نصف ارتفاع الشاشة للجوال */
     }
 
     .download a {
