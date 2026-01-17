@@ -5,20 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>تحميل الملف</title>
 <style>
-/* الجسم */
 body {
     margin: 0;
     font-family: Tahoma, Arial, sans-serif;
     background: #f2f4f7;
 }
 
-/* الحاوية الرئيسية تغطي كامل الشاشة على الكمبيوتر */
+/* الحاوية الرئيسية */
 .main-container {
-    min-height: 100vh;  /* يملأ الشاشة على الكمبيوتر */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; /* يبدأ المحتوى من الأعلى */
+    width: 100%;
     padding: 20px 0;
 }
 
@@ -26,12 +21,13 @@ body {
 .ad-container {
     width: 90%;
     max-width: 1200px;
+    margin: 0 auto;
 }
 
 .ad-container img {
-    width: 100%;
-    height: auto;          /* الارتفاع يتناسب مع العرض */
-    object-fit: contain;   /* يظهر كامل الصورة بدون قص */
+    width: 100%;        /* يغطي العرض بالكامل */
+    height: auto;       /* الارتفاع يتناسب مع العرض */
+    object-fit: contain; /* يظهر كامل الصورة بدون قص */
     border-radius: 12px;
 }
 
@@ -39,7 +35,7 @@ body {
 .content {
     width: 90%;
     max-width: 1200px;
-    margin-top: 30px;
+    margin: 30px auto 0 auto;
     text-align: center;
 }
 
@@ -59,7 +55,7 @@ body {
     font-weight: bold;
     font-size: 18px;
     padding: 14px 50px;
-    margin-top: 50px; /* مسافة مناسبة أسفل الإعلان */
+    margin-top: 50px;
 }
 
 .download a.disabled {
@@ -74,7 +70,7 @@ body {
     }
 
     .ad-container img {
-        max-height: 50vh;   /* نصف ارتفاع الشاشة للجوال */
+        max-height: 50vh;  /* نصف الشاشة على الجوال */
     }
 
     .download a {
