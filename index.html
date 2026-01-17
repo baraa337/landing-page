@@ -1,81 +1,117 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>تحميل الملف</title>
 <style>
-body {
-    margin: 0;
-    font-family: Tahoma, Arial, sans-serif;
-    background: #f2f4f7;
-}
+    /* إعدادات عامة لضمان التجاوب */
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f2f4f7;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+    }
 
-/* الحاوية الرئيسية */
-.main-container {
-    width: 100%;
-    padding: 20px 0;
-}
+    /* الحاوية الرئيسية */
+    .main-container {
+        width: 100%;
+        max-width: 1000px; /* تحديد عرض أقصى مريح للعين */
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
 
-/* الإعلان */
-.ad-container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    height: 70vh; /* يغطي 70% من ارتفاع الشاشة على الكمبيوتر */
-}
-
-.ad-container img {
-    width: 100%;
-    height: 100%;       /* يغطي كامل الحاوية */
-    object-fit: contain; /* الصورة كاملة بدون قص */
-    border-radius: 12px;
-}
-
-/* محتوى التحميل */
-.content {
-    width: 90%;
-    max-width: 1200px;
-    margin: 20px auto 0 auto;
-    text-align: center;
-}
-
-/* العداد */
-#countdown {
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-/* زر التحميل */
-.download a {
-    display: inline-block;
-    background: #28a745;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 12px;
-    font-weight: bold;
-    font-size: 18px;
-    padding: 14px 50px;
-    margin-top: 30px;
-}
-
-.download a.disabled {
-    background: #aaa;
-    pointer-events: none;
-}
-
-/* الجوال */
-@media (max-width: 768px) {
+    /* حاوية الإعلان المتجاوبة */
     .ad-container {
-        height: 50vh;   /* نصف الشاشة على الجوال */
+        width: 100%;
+        /* استخدام aspect-ratio يحافظ على أبعاد الصورة ومنع القفز عند التحميل */
+        aspect-ratio: 16 / 9; 
+        max-height: 60vh;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        background: #fff;
     }
 
-    .download a {
-        font-size: 5vw;
-        padding: 3vw 5vw;
-        margin-top: 20px;
+    .ad-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* لضمان ظهور الإعلان كاملاً دون قص */
+        display: block;
     }
-}
+
+    /* محتوى التحميل */
+    .content {
+        width: 100%;
+        text-align: center;
+        background: #fff;
+        padding: 30px 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    /* العداد */
+    #countdown {
+        font-size: clamp(16px, 4vw, 22px); /* خط مرن يتغير حسب حجم الشاشة */
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    #timer {
+        font-weight: bold;
+        color: #e74c3c;
+    }
+
+    /* زر التحميل المتجاوب */
+    .download a {
+        display: inline-block;
+        background: #28a745;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: clamp(16px, 3.5vw, 20px);
+        padding: 15px 40px;
+        transition: transform 0.2s, background 0.2s;
+        width: auto;
+        max-width: 100%;
+    }
+
+    .download a:hover {
+        background: #218838;
+        transform: scale(1.02);
+    }
+
+    .download a.disabled {
+        background: #ccc;
+        color: #777;
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+
+    /* تحسينات للشاشات الصغيرة جداً (الجوال) */
+    @media (max-width: 480px) {
+        .main-container {
+            padding: 10px;
+        }
+        .ad-container {
+            aspect-ratio: 4 / 3; /* تغيير النسبة لتناسب الجوال أكثر */
+        }
+        .download a {
+            width: 100%; /* الزر يأخذ كامل العرض في الجوال لسهولة الضغط */
+            padding: 15px 20px;
+        }
+    }
 </style>
 </head>
 
@@ -91,14 +127,13 @@ body {
 
     <div class="content">
         <div id="countdown">
-            يرجى الانتظار <span id="timer">5</span> ثوانٍ قبل التحميل
+            يرجى الانتظار <span id="timer">5</span> ثوانٍ لتجهيز الرابط...
         </div>
 
         <div class="download">
             <a id="downloadBtn"
                href="https://a.top4top.io/f_cJDbBG5nUxhS-DQrD6_c8Q/1768838167/36695w5lu0.rar"
-               class="disabled"
-               download>
+               class="disabled">
                ⬇️ تحميل الملف الآن
             </a>
         </div>
@@ -110,13 +145,14 @@ body {
 let t = 5;
 const timer = document.getElementById("timer");
 const btn = document.getElementById("downloadBtn");
+const countdownText = document.getElementById("countdown");
 
 const i = setInterval(() => {
     t--;
     timer.textContent = t;
     if (t <= 0) {
         clearInterval(i);
-        document.getElementById("countdown").style.display = "none";
+        countdownText.innerHTML = "الرابط جاهز الآن!";
         btn.classList.remove("disabled");
     }
 }, 1000);
