@@ -20,6 +20,7 @@
             background-color: #f0f2f5;
         }
 
+        /* أنيميشن الوميض للصورة */
         @keyframes pulse-clickable {
             0% { transform: scale(1); opacity: 1; }
             50% { transform: scale(0.98); opacity: 0.85; }
@@ -34,6 +35,7 @@
             background: #fff;
         }
 
+        /* قسم الصورة */
         .ad-section {
             display: flex;
             justify-content: center;
@@ -61,6 +63,7 @@
             border-radius: 12px;
         }
 
+        /* قسم التحكم */
         .action-section {
             background: #ffffff;
             padding: 25px 25px calc(25px + env(safe-area-inset-bottom)) 25px;
@@ -84,11 +87,12 @@
         }
 
         #timer {
-            color: #8b5cf6; /* بنفسجي في العداد أيضاً */
+            color: #4c1d95; /* لون بنفسجي غامق جداً للعداد */
             font-size: 1.4rem;
             font-weight: 800;
         }
 
+        /* زر التحميل */
         .btn {
             display: flex;
             align-items: center;
@@ -113,6 +117,7 @@
             box-shadow: 0 10px 15px -3px rgba(22, 163, 74, 0.3);
         }
 
+        /* تنسيق الكمبيوتر */
         @media (min-width: 1024px) {
             .wrapper { grid-template-rows: none; grid-template-columns: 1.3fr 0.7fr; }
             .ad-section { padding: 0; background: #f1f5f9; border-left: 1px solid #e2e8f0; }
@@ -155,8 +160,8 @@
 
             if (count <= 0) {
                 clearInterval(timerInterval);
-                // فرض اللون البنفسجي باستخدام !important لضمان التنفيذ
-                msgBox.innerHTML = '<p style="color: #8b5cf6 !important; font-size: 1.2rem; font-weight: 800; text-align: center;">✅ الرابط جاهز .. إضغط للتحميل</p>';
+                // استخدام لون بنفسجي غامق جداً (Indigo-900)
+                msgBox.innerHTML = '<p style="color: #4c1d95 !important; font-size: 1.3rem; font-weight: 800; text-align: center;">✅ الرابط جاهز .. إضغط للتحميل</p>';
                 btnEl.classList.add('ready');
             }
         }, 1000);
