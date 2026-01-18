@@ -6,156 +6,124 @@
     <title>بوابة التحميل</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800&display=swap" rel="stylesheet">
     <style>
+        /* الأساسيات */
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { height: 100dvh; overflow: hidden; font-family: 'Cairo', sans-serif; background: #fff; }
 
-        html, body {
-            height: 100%;
-            height: 100dvh; 
-            overflow: hidden; 
-            font-family: 'Cairo', sans-serif;
-            background-color: #f0f2f5;
-        }
-
+        /* حركة الوميض */
         @keyframes imgPulse {
-            0% { transform: scale(1); opacity: 1; }
+            0%, 100% { transform: scale(1); }
             50% { transform: scale(0.97); opacity: 0.9; }
-            100% { transform: scale(1); opacity: 1; }
         }
 
-        .main-container {
+        .main-grid {
             display: grid;
             height: 100%;
-            width: 100%;
-            grid-template-rows: 1fr auto; 
-            background: #fff;
+            grid-template-rows: 1fr auto;
         }
 
-        .top-visual {
+        /* قسم الصورة */
+        .img-area {
             display: flex;
             justify-content: center;
             align-items: center;
             background: #f8fafc;
-            overflow: hidden;
-            min-height: 0; 
-        }
-
-        .clickable-link {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            justify-content: center;
-            align-items: center;
             padding: 20px;
-            animation: imgPulse 3s infinite ease-in-out;
-            text-decoration: none;
+            min-height: 0;
         }
-
-        .clickable-link img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain; 
-            border-radius: 12px;
-        }
-
-        .bottom-controls {
-            background: #ffffff;
-            padding: 25px 25px calc(25px + env(safe-area-inset-bottom)) 25px;
+        .img-area a {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            width: 100%; height: 100%;
+            justify-content: center; align-items: center;
+            animation: imgPulse 3s infinite ease-in-out;
+        }
+        .img-area img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; }
+
+        /* قسم التحكم */
+        .ui-area {
+            padding: 30px 20px calc(30px + env(safe-area-inset-bottom));
+            text-align: center;
             border-top: 2px solid #f1f5f9;
-            z-index: 10;
         }
 
-        .status-msg {
-            margin-bottom: 20px;
-            text-align: center;
+        /* النص الافتراضي (الانتظار) */
+        .status-text {
             font-size: 1.2rem;
             color: #475569;
             font-weight: 600;
+            margin-bottom: 20px;
+            transition: all 0.5s ease;
         }
 
-        /* لون العداد بنفسجي صريح من البداية */
-        #timer-count {
-            color: #7c3aed; 
-            font-size: 1.5rem;
-            font-weight: 800;
+        /* كلاس البنفسجي الذي سيتم تفعيله */
+        .purple-active {
+            color: #8b5cf6 !important; /* بنفسجي صريح وواضح */
+            font-size: 1.3rem !important;
+            font-weight: 800 !important;
         }
 
-        .final-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            max-width: 400px;
-            height: 65px;
-            background: #16a34a;
-            color: white;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 700;
-            border-radius: 16px;
-            transition: all 0.4s ease;
-            opacity: 0.2;
-            pointer-events: none;
-        }
+        #timer { color: #8b5cf6; font-weight: 800; }
 
-        .final-btn.ready-to-go {
-            opacity: 1;
-            pointer-events: auto;
-            box-shadow: 0 10px 15px -3px rgba(22, 163, 74, 0.3);
+        /* الزر */
+        .btn-main {
+            display: flex; align-items: center; justify-content: center;
+            width: 100%; max-width: 400px; height: 65px; margin: 0 auto;
+            background: #16a34a; color: #fff; text-decoration: none;
+            font-weight: 700; border-radius: 16px; font-size: 1.1rem;
+            opacity: 0.2; pointer-events: none; transition: 0.3s;
         }
+        .btn-active { opacity: 1; pointer-events: auto; box-shadow: 0 10px 20px rgba(22, 163, 74, 0.3); }
 
+        /* الكمبيوتر */
         @media (min-width: 1024px) {
-            .main-container { grid-template-rows: none; grid-template-columns: 1.3fr 0.7fr; }
-            .top-visual { border-left: 1px solid #e2e8f0; }
-            .clickable-link { padding: 40px; }
+            .main-grid { grid-template-rows: none; grid-template-columns: 1.3fr 0.7fr; }
+            .ui-area { border-top: none; border-right: 2px solid #f1f5f9; display: flex; flex-direction: column; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <div class="main-container">
-        <div class="top-visual">
-            <a href="https://lirat.store/r/F0H74" target="_blank" class="clickable-link">
+    <div class="main-grid">
+        <div class="img-area">
+            <a href="https://lirat.store/r/F0H74" target="_blank">
                 <img src="https://i.postimg.cc/hG0dZ1nS/FB-IMG-1768594887137.jpg" alt="AD">
             </a>
         </div>
 
-        <div class="bottom-controls">
-            <div id="dynamic-message" class="status-msg">
-                يرجى الانتظار.. <span id="timer-count">5</span> ثوانٍ
+        <div class="ui-area">
+            <div id="statusMsg" class="status-text">
+                يرجى الانتظار.. <span id="timer">5</span> ثوانٍ
             </div>
 
-            <a id="download-trigger" 
-               href="https://a.top4top.io/f_cJDbBG5nUxhS-DQrD6_c8Q/1768838167/36695w5lu0.rar" 
-               class="final-btn">
-               ⬇️ تحميل الملف
+            <a id="dlBtn" href="https://a.top4top.io/f_cJDbBG5nUxhS-DQrD6_c8Q/1768838167/36695w5lu0.rar" class="btn-main">
+                ⬇️ تحميل الملف
             </a>
         </div>
     </div>
 
     <script>
-        let seconds = 5;
-        const timerDisplay = document.getElementById('timer-count');
-        const btnTrigger = document.getElementById('download-trigger');
-        const msgWrapper = document.getElementById('dynamic-message');
+        let count = 5;
+        const timerObj = document.getElementById('timer');
+        const msgObj = document.getElementById('statusMsg');
+        const btnObj = document.getElementById('dlBtn');
 
-        const runCountdown = setInterval(() => {
-            seconds--;
-            if(timerDisplay) timerDisplay.textContent = seconds;
+        const interval = setInterval(() => {
+            count--;
+            if(timerObj) timerObj.innerText = count;
 
-            if (seconds <= 0) {
-                clearInterval(runCountdown);
+            if(count <= 0) {
+                clearInterval(interval);
                 
-                // تغيير النص واللون إلى البنفسجي الصريح (7c3aed)
-                msgWrapper.innerHTML = '✅ <span style="color: #7c3aed !important; font-size: 1.3rem !important; font-weight: 800 !important; display: inline-block;">الرابط جاهز .. إضغط للتحميل</span>';
+                // 1. تغيير النص
+                msgObj.innerHTML = "✅ الرابط جاهز .. إضغط للتحميل";
                 
-                btnTrigger.classList.add('ready-to-go');
+                // 2. تفعيل اللون البنفسجي عبر الكلاس الجاهز في CSS
+                msgObj.classList.add('purple-active');
+                
+                // 3. تفعيل الزر
+                btnObj.classList.add('btn-active');
             }
         }, 1000);
     </script>
-
 </body>
 </html>
