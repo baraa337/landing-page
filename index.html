@@ -19,28 +19,25 @@
 
         .ui-area { padding: 30px 20px calc(30px + env(safe-area-inset-bottom)); text-align: center; border-top: 2px solid #f1f5f9; }
 
-        .status-text { font-size: 1.2rem; color: #475569; font-weight: 600; margin-bottom: 20px; }
+        .status-text { font-size: 1.2rem; color: #475569; font-weight: 600; margin-bottom: 10px; }
 
         .purple-middle { color: #6d28d9 !important; font-size: 1.3rem !important; font-weight: 800 !important; }
 
-        /* تنسيق أيقونة الأمان */
+        /* تنسيق أيقونة الأمان - تظهر فوراً */
         .security-badge {
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
             background: #f0fdf4;
             color: #16a34a;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
             font-weight: 700;
-            margin-top: 8px;
+            margin-bottom: 20px;
             border: 1px solid #dcfce7;
-            opacity: 0; /* تختفي وتظهر مع الرابط */
-            transition: opacity 0.5s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
-
-        .show-badge { opacity: 1; }
 
         #timer { color: #6d28d9; font-weight: 800; }
 
@@ -69,15 +66,15 @@
         </div>
 
         <div class="ui-area">
+            <div class="security-badge">
+                🛡️ ملف مفحوص وآمن 100%
+            </div>
+
             <div id="statusMsg" class="status-text">
                 يرجى الانتظار.. <span id="timer">5</span> ثوانٍ
             </div>
 
-            <div id="securityBadge" class="security-badge">
-                🛡️ ملف مفحوص وآمن 100%
-            </div>
-
-            <div style="margin-top: 15px;">
+            <div style="margin-top: 10px;">
                 <a id="dlBtn" href="https://a.top4top.io/f_cJDbBG5nUxhS-DQrD6_c8Q/1768838167/36695w5lu0.rar" class="btn-main">
                     ⬇️ تحميل الملف
                 </a>
@@ -90,7 +87,6 @@
         const timerObj = document.getElementById('timer');
         const msgObj = document.getElementById('statusMsg');
         const btnObj = document.getElementById('dlBtn');
-        const badgeObj = document.getElementById('securityBadge');
 
         const interval = setInterval(() => {
             count--;
@@ -98,9 +94,9 @@
 
             if(count <= 0) {
                 clearInterval(interval);
+                // تغيير النص للبنفسجي المتوسط المتفق عليه
                 msgObj.innerHTML = "✅ الرابط جاهز .. إضغط للتحميل";
                 msgObj.classList.add('purple-middle');
-                badgeObj.classList.add('show-badge'); // إظهار أيقونة الأمان
                 btnObj.classList.add('btn-active');
             }
         }, 1000);
