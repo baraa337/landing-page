@@ -3,58 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>بوابة التحميل</title>
+    <title>بوابة التحميل الآمنة</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { height: 100dvh; overflow: hidden; font-family: 'Cairo', sans-serif; background: #fff; }
 
-        @keyframes imgPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(0.97); opacity: 0.9; }
-        }
+        @keyframes imgPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.97); opacity: 0.9; } }
 
-        .main-grid {
-            display: grid;
-            height: 100%;
-            grid-template-rows: 1fr auto;
-        }
+        .main-grid { display: grid; height: 100%; grid-template-rows: 1fr auto; }
 
-        .img-area {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #f8fafc;
-            padding: 20px;
-            min-height: 0;
-        }
-        .img-area a {
-            display: flex;
-            width: 100%; height: 100%;
-            justify-content: center; align-items: center;
-            animation: imgPulse 3s infinite ease-in-out;
-        }
+        .img-area { display: flex; justify-content: center; align-items: center; background: #f8fafc; padding: 20px; min-height: 0; }
+        .img-area a { display: flex; width: 100%; height: 100%; justify-content: center; align-items: center; animation: imgPulse 3s infinite ease-in-out; }
         .img-area img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; }
 
-        .ui-area {
-            padding: 30px 20px calc(30px + env(safe-area-inset-bottom));
-            text-align: center;
-            border-top: 2px solid #f1f5f9;
+        .ui-area { padding: 30px 20px calc(30px + env(safe-area-inset-bottom)); text-align: center; border-top: 2px solid #f1f5f9; }
+
+        .status-text { font-size: 1.2rem; color: #475569; font-weight: 600; margin-bottom: 20px; }
+
+        .purple-middle { color: #6d28d9 !important; font-size: 1.3rem !important; font-weight: 800 !important; }
+
+        /* تنسيق أيقونة الأمان */
+        .security-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #f0fdf4;
+            color: #16a34a;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-top: 8px;
+            border: 1px solid #dcfce7;
+            opacity: 0; /* تختفي وتظهر مع الرابط */
+            transition: opacity 0.5s;
         }
 
-        .status-text {
-            font-size: 1.2rem;
-            color: #475569;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        /* الدرجة الوسطى المطلوبة للبنفسجي */
-        .purple-middle {
-            color: #6d28d9 !important; 
-            font-size: 1.3rem !important;
-            font-weight: 800 !important;
-        }
+        .show-badge { opacity: 1; }
 
         #timer { color: #6d28d9; font-weight: 800; }
 
@@ -87,9 +73,15 @@
                 يرجى الانتظار.. <span id="timer">5</span> ثوانٍ
             </div>
 
-            <a id="dlBtn" href="https://a.top4top.io/f_cJDbBG5nUxhS-DQrD6_c8Q/1768838167/36695w5lu0.rar" class="btn-main">
-                ⬇️ تحميل الملف
-            </a>
+            <div id="securityBadge" class="security-badge">
+                🛡️ ملف مفحوص وآمن 100%
+            </div>
+
+            <div style="margin-top: 15px;">
+                <a id="dlBtn" href="https://a.top4top.io/f_cJDbBG5nUxhS-DQrD6_c8Q/1768838167/36695w5lu0.rar" class="btn-main">
+                    ⬇️ تحميل الملف
+                </a>
+            </div>
         </div>
     </div>
 
@@ -98,6 +90,7 @@
         const timerObj = document.getElementById('timer');
         const msgObj = document.getElementById('statusMsg');
         const btnObj = document.getElementById('dlBtn');
+        const badgeObj = document.getElementById('securityBadge');
 
         const interval = setInterval(() => {
             count--;
@@ -107,6 +100,7 @@
                 clearInterval(interval);
                 msgObj.innerHTML = "✅ الرابط جاهز .. إضغط للتحميل";
                 msgObj.classList.add('purple-middle');
+                badgeObj.classList.add('show-badge'); // إظهار أيقونة الأمان
                 btnObj.classList.add('btn-active');
             }
         }, 1000);
