@@ -6,11 +6,9 @@
     <title>بوابة التحميل</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800&display=swap" rel="stylesheet">
     <style>
-        /* الأساسيات */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { height: 100dvh; overflow: hidden; font-family: 'Cairo', sans-serif; background: #fff; }
 
-        /* حركة الوميض */
         @keyframes imgPulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(0.97); opacity: 0.9; }
@@ -22,7 +20,6 @@
             grid-template-rows: 1fr auto;
         }
 
-        /* قسم الصورة */
         .img-area {
             display: flex;
             justify-content: center;
@@ -39,32 +36,28 @@
         }
         .img-area img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; }
 
-        /* قسم التحكم */
         .ui-area {
             padding: 30px 20px calc(30px + env(safe-area-inset-bottom));
             text-align: center;
             border-top: 2px solid #f1f5f9;
         }
 
-        /* النص الافتراضي (الانتظار) */
         .status-text {
             font-size: 1.2rem;
             color: #475569;
             font-weight: 600;
             margin-bottom: 20px;
-            transition: all 0.5s ease;
         }
 
-        /* كلاس البنفسجي الذي سيتم تفعيله */
-        .purple-active {
-            color: #8b5cf6 !important; /* بنفسجي صريح وواضح */
+        /* الدرجة الوسطى المطلوبة للبنفسجي */
+        .purple-middle {
+            color: #6d28d9 !important; 
             font-size: 1.3rem !important;
             font-weight: 800 !important;
         }
 
-        #timer { color: #8b5cf6; font-weight: 800; }
+        #timer { color: #6d28d9; font-weight: 800; }
 
-        /* الزر */
         .btn-main {
             display: flex; align-items: center; justify-content: center;
             width: 100%; max-width: 400px; height: 65px; margin: 0 auto;
@@ -74,7 +67,6 @@
         }
         .btn-active { opacity: 1; pointer-events: auto; box-shadow: 0 10px 20px rgba(22, 163, 74, 0.3); }
 
-        /* الكمبيوتر */
         @media (min-width: 1024px) {
             .main-grid { grid-template-rows: none; grid-template-columns: 1.3fr 0.7fr; }
             .ui-area { border-top: none; border-right: 2px solid #f1f5f9; display: flex; flex-direction: column; justify-content: center; }
@@ -113,14 +105,8 @@
 
             if(count <= 0) {
                 clearInterval(interval);
-                
-                // 1. تغيير النص
                 msgObj.innerHTML = "✅ الرابط جاهز .. إضغط للتحميل";
-                
-                // 2. تفعيل اللون البنفسجي عبر الكلاس الجاهز في CSS
-                msgObj.classList.add('purple-active');
-                
-                // 3. تفعيل الزر
+                msgObj.classList.add('purple-middle');
                 btnObj.classList.add('btn-active');
             }
         }, 1000);
