@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>صفحة التحميل</title>
+    <title>بوابة التحميل</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -14,55 +14,61 @@
 
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: #f4f7f9;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            /* لضمان عدم وجود سكرول ولتكون الصفحة بوضعية الشاشة */
+            background-color: #f8fafc;
+            /* منع السكرول وجعل الصفحة بوضعية الشاشة */
             height: 100vh;
-            overflow: hidden; 
-            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 20px;
         }
 
-        /* الحاوية الرئيسية */
         .page-container {
             width: 100%;
-            max-width: 600px; /* تحديد العرض لعدم التمدد الزائد */
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start; /* تبدأ من الأعلى */
-            gap: 15px;
+            max-width: 1100px; /* عرض أكبر للكمبيوتر */
+            height: 90vh;
+            display: grid;
+            /* تقسيم الشاشة لنصفين على الكمبيوتر */
+            grid-template-columns: 1.2fr 0.8fr; 
+            gap: 30px;
+            background: #fff;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
 
-        /* قسم الإعلان - محدد الارتفاع لضمان ظهور الزر */
+        /* قسم الصورة */
         .ad-box {
             width: 100%;
-            flex: 0 1 60vh; /* تأخذ كحد أقصى 60% من ارتفاع الشاشة */
-            background: #fff;
-            border-radius: 12px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f1f5f9;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .ad-box img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* لضمان ظهور كامل الصورة مهما كان حجم الشاشة */
-            display: block;
+            object-fit: contain; /* تظهر الصورة كاملة دون قص */
         }
 
-        /* منطقة الأكشن (العداد والزر) */
+        /* قسم العداد والزر */
         .action-area {
-            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding-bottom: 20px;
         }
 
         .timer-text {
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            color: #444;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: #334155;
         }
 
         #timer {
@@ -70,45 +76,68 @@
             font-weight: 700;
         }
 
-        /* زر التحميل */
         .btn-download {
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 100%;
-            max-width: 350px;
+            max-width: 320px;
+            height: 65px;
             background-color: #16a34a;
             color: #ffffff;
             text-decoration: none;
-            padding: 14px;
-            border-radius: 10px;
+            border-radius: 12px;
             font-weight: 700;
-            font-size: 1.1rem;
-            transition: 0.3s;
-            opacity: 0.5;
-            pointer-events: none; /* معطل افتراضياً */
-            box-shadow: 0 4px 6px rgba(22, 163, 74, 0.2);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            opacity: 0.4;
+            pointer-events: none;
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.2);
         }
 
         .btn-download.active {
             opacity: 1;
             pointer-events: auto;
-            transform: scale(1);
+            transform: translateY(0);
         }
 
-        .btn-download.active:active {
-            transform: scale(0.98);
+        .btn-download.active:hover {
+            background-color: #15803d;
+            transform: translateY(-2px);
         }
 
-        /* تحسينات للشاشات الصغيرة جداً */
-        @media (max-height: 500px) {
-            .ad-box { flex: 0 1 40vh; }
-            .timer-text { font-size: 0.9rem; margin-bottom: 5px; }
-            .btn-download { padding: 10px; }
+        /* --- وضعية الجوال (Media Queries) --- */
+        @media (max-width: 850px) {
+            body {
+                padding: 10px;
+                overflow: auto; /* السماح بالسكرول البسيط في الجوال إذا لزم الأمر */
+            }
+            .page-container {
+                grid-template-columns: 1fr; /* تحويل العرض إلى عمود واحد */
+                grid-template-rows: auto 1fr;
+                height: auto;
+                max-height: 98vh;
+                gap: 15px;
+                padding: 15px;
+            }
+            .ad-box {
+                height: 55vh; /* تحديد ارتفاع الصورة في الجوال لضمان رؤية الزر */
+            }
+            .timer-text {
+                font-size: 1.1rem;
+                margin-bottom: 15px;
+            }
+            .btn-download {
+                height: 55px;
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="page-container">
+        
         <div class="ad-box">
             <a href="https://lirat.store/r/F0H74" target="_blank">
                 <img src="https://i.postimg.cc/hG0dZ1nS/FB-IMG-1768594887137.jpg" alt="AD">
@@ -126,6 +155,7 @@
                ⬇️ تحميل الملف الآن
             </a>
         </div>
+
     </div>
 
     <script>
@@ -140,7 +170,7 @@
 
             if (timeLeft <= 0) {
                 clearInterval(countdown);
-                statusDiv.innerHTML = "✅ الرابط جاهز للتحميل";
+                statusDiv.innerHTML = "<span style='color: #16a34a;'>✅ الرابط جاهز للتحميل</span>";
                 btn.classList.add('active');
             }
         }, 1000);
