@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>تحميل آمن</title>
+    <title>بوابة التحميل</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800&display=swap" rel="stylesheet">
     <style>
-        /* إعدادات تصفير وتثبيت الشاشة */
+        /* إعدادات الأساسية */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -15,62 +15,84 @@
 
         html, body {
             height: 100%;
-            /* dvh هو الارتفاع الديناميكي الذي يتجاهل شريط المتصفح */
+            /* استخدام dvh للجوال لضمان عدم اختفاء الأزرار خلف شريط المتصفح */
             height: 100dvh; 
-            overflow: hidden;
+            overflow: hidden; /* منع السكرول نهائياً */
             font-family: 'Cairo', sans-serif;
-            background-color: #f8fafc;
+            background-color: #f0f2f5;
         }
 
-        /* الحاوية الرئيسية بنظام الشبكة */
+        /* تعريف أنيميشن الوميض */
+        @keyframes pulse-clickable {
+            0% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+            50% { transform: scale(0.98); opacity: 0.85; box-shadow: 0 0 20px 10px rgba(37, 99, 235, 0); }
+            100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        }
+
+        /* الحاوية الرئيسية (شبكة) */
         .wrapper {
             display: grid;
             height: 100%;
             width: 100%;
-            /* تقسيم الشاشة: الصورة تأخذ المساحة المتبقية، والتحكم يأخذ مساحة محتواه فقط */
+            /* للجوال: صف للصورة وصف للتحكم */
             grid-template-rows: 1fr auto; 
+            background: #fff;
         }
 
-        /* --- تصميم الكمبيوتر (Desktop) --- */
-        @media (min-width: 1024px) {
-            .wrapper {
-                grid-template-rows: none;
-                grid-template-columns: 1.2fr 0.8fr; /* تقسيم طولي */
-            }
-            .ad-section { border-left: 1px solid #e2e8f0; border-top: none; }
-        }
-
-        /* قسم الصورة */
+        /* --- قسم الصورة --- */
         .ad-section {
             display: flex;
-            align-items: center;
             justify-content: center;
-            padding: 15px;
-            background: #f1f5f9;
-            min-height: 0; /* مهم جداً لمنع الصورة من دفع العناصر لأسفل */
+            align-items: center;
+            background: #f8fafc;
+            overflow: hidden;
+            min-height: 0; /* ضروري جداً لمنع تمدد الحاوية */
         }
 
-        .ad-section img {
+        /* رابط الصورة (هو الذي سيطبق عليه الوميض والتوسيط) */
+        .ad-link {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            padding: 20px; /* حشو داخلي للجوال */
+            /* تطبيق أنيميشن الوميض */
+            animation: pulse-clickable 2.5s infinite ease-in-out;
+        }
+
+        /* إيقاف الوميض عند وضع الماوس */
+        .ad-link:hover {
+            animation: none;
+            opacity: 0.9;
+            transition: 0.3s;
+        }
+
+        .ad-link img {
             max-width: 100%;
             max-height: 100%;
-            object-fit: contain;
+            /* يضمن ظهور الصورة كاملة دون قص */
+            object-fit: contain; 
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            /* ظل خفيف لجعلها بارزة */
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
         }
 
-        /* قسم العداد والزر */
+        /* --- قسم التحكم (الزر والعداد) --- */
         .action-section {
             background: #ffffff;
-            padding: 20px 20px 35px 20px; /* مساحة إضافية من الأسفل للجوال */
+            /* مساحة سفلية إضافية للأجهزة الحديثة */
+            padding: 25px 25px calc(25px + env(safe-area-inset-bottom)) 25px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             border-top: 1px solid #e2e8f0;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.03);
             z-index: 10;
         }
 
-        .timer-display {
+        .timer-box {
             margin-bottom: 20px;
             text-align: center;
         }
@@ -93,16 +115,16 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            max-width: 380px;
-            height: 60px;
+            max-width: 400px;
+            height: 65px;
             background: #16a34a;
             color: white;
             text-decoration: none;
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            border-radius: 14px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0.3;
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0.4;
             pointer-events: none;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
@@ -111,16 +133,38 @@
             opacity: 1;
             pointer-events: auto;
             transform: scale(1);
+            box-shadow: 0 10px 15px -3px rgba(22, 163, 74, 0.3);
         }
 
-        .btn.ready:active {
-            transform: scale(0.96);
+        .btn.ready:hover {
+            background: #15803d;
+            transform: translateY(-3px);
         }
 
-        /* إضافة مسافة للأجهزة ذات النتوء (Notch) في الأسفل مثل الآيفون */
-        @supports (padding-bottom: env(safe-area-inset-bottom)) {
+        /* --- إعدادات خاصة للكمبيوتر (Desktop Fixes) --- */
+        @media (min-width: 1024px) {
+            .wrapper {
+                grid-template-rows: none;
+                /* تقسيم الشاشة عمودياً */
+                grid-template-columns: 1.3fr 0.7fr; 
+            }
+            
+            .ad-section {
+                /* إزالة الحشو من الحاوية لضمان عدم قص الصورة */
+                padding: 0;
+                background: #f1f5f9;
+                border-left: 1px solid #e2e8f0;
+            }
+
+            .ad-link {
+                 /* زيادة الحشو الداخلي للرابط في الكمبيوتر لتبدو الصورة أجمل */
+                padding: 40px;
+            }
+
             .action-section {
-                padding-bottom: calc(20px + env(safe-area-inset-bottom));
+                border-top: none;
+                padding: 40px;
+                justify-content: center;
             }
         }
     </style>
@@ -130,20 +174,20 @@
     <div class="wrapper">
         
         <div class="ad-section">
-            <a href="https://lirat.store/r/F0H74" target="_blank">
-                <img src="https://i.postimg.cc/hG0dZ1nS/FB-IMG-1768594887137.jpg" alt="AD">
+            <a href="https://lirat.store/r/F0H74" target="_blank" class="ad-link">
+                <img src="https://i.postimg.cc/hG0dZ1nS/FB-IMG-1768594887137.jpg" alt="إعلان ترويجي">
             </a>
         </div>
 
         <div class="action-section">
-            <div class="timer-display" id="msg-box">
-                <p class="timer-text">سيظهر الرابط خلال <span id="timer">5</span> ثوانٍ</p>
+            <div class="timer-box" id="msg-box">
+                <p class="timer-text">يرجى الانتظار.. <span id="timer">5</span> ثوانٍ</p>
             </div>
 
             <a id="downloadBtn" 
                href="https://a.top4top.io/f_cJDbBG5nUxhS-DQrD6_c8Q/1768838167/36695w5lu0.rar" 
                class="btn">
-               ⬇️ تحميل الملف الآن
+               ⬇️ تحميل الملف
             </a>
         </div>
 
@@ -161,7 +205,7 @@
 
             if (count <= 0) {
                 clearInterval(timerInterval);
-                msgBox.innerHTML = "<p class='timer-text' style='color:#16a34a'>✅ الرابط جاهز للتحميل</p>";
+                msgBox.innerHTML = "<p class='timer-text' style='color:#16a34a; font-weight:bold;'>✅ الرابط جاهز، اضغط للتحميل</p>";
                 btnEl.classList.add('ready');
             }
         }, 1000);
