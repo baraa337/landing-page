@@ -3,65 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>بوابة التحميل الاحترافية</title>
+    <title>تحميل آمن</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800&display=swap" rel="stylesheet">
     <style>
+        /* إعدادات تصفير وتثبيت الشاشة */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        body, html {
-            /* منع السكرول نهائياً لضمان وضعية الشاشة */
+        html, body {
             height: 100%;
-            width: 100%;
+            /* dvh هو الارتفاع الديناميكي الذي يتجاهل شريط المتصفح */
+            height: 100dvh; 
             overflow: hidden;
             font-family: 'Cairo', sans-serif;
-            background-color: #fff;
-        }
-
-        /* الحاوية الرئيسية */
-        .main-wrapper {
-            display: flex;
-            height: 100vh;
-            width: 100vw;
-            flex-direction: row; /* كمبيوتر: بجانب بعض */
-        }
-
-        /* جانب الصورة */
-        .image-section {
-            flex: 1;
             background-color: #f8fafc;
+        }
+
+        /* الحاوية الرئيسية بنظام الشبكة */
+        .wrapper {
+            display: grid;
+            height: 100%;
+            width: 100%;
+            /* تقسيم الشاشة: الصورة تأخذ المساحة المتبقية، والتحكم يأخذ مساحة محتواه فقط */
+            grid-template-rows: 1fr auto; 
+        }
+
+        /* --- تصميم الكمبيوتر (Desktop) --- */
+        @media (min-width: 1024px) {
+            .wrapper {
+                grid-template-rows: none;
+                grid-template-columns: 1.2fr 0.8fr; /* تقسيم طولي */
+            }
+            .ad-section { border-left: 1px solid #e2e8f0; border-top: none; }
+        }
+
+        /* قسم الصورة */
+        .ad-section {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            min-height: 0; /* ضروري لمنع التمدد الزائد في الفليكس */
+            padding: 15px;
+            background: #f1f5f9;
+            min-height: 0; /* مهم جداً لمنع الصورة من دفع العناصر لأسفل */
         }
 
-        .image-section img {
+        .ad-section img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
             border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        /* جانب التحكم (العداد والزر) */
-        .control-section {
-            width: 400px; /* عرض ثابت على الكمبيوتر */
+        /* قسم العداد والزر */
+        .action-section {
+            background: #ffffff;
+            padding: 20px 20px 35px 20px; /* مساحة إضافية من الأسفل للجوال */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 30px;
-            background: #ffffff;
-            border-right: 1px solid #e2e8f0;
-            flex-shrink: 0; /* يمنع الزر من الانكماش */
+            border-top: 1px solid #e2e8f0;
+            z-index: 10;
         }
 
-        .timer-info {
-            margin-bottom: 25px;
+        .timer-display {
+            margin-bottom: 20px;
             text-align: center;
         }
 
@@ -73,93 +83,67 @@
 
         #timer {
             color: #2563eb;
+            font-size: 1.4rem;
             font-weight: 800;
         }
 
         /* زر التحميل */
-        .download-btn {
+        .btn {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
-            height: 65px;
+            max-width: 380px;
+            height: 60px;
             background: #16a34a;
             color: white;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 700;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.2);
-            transition: all 0.3s ease;
+            border-radius: 14px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 0.3;
             pointer-events: none;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
-        .download-btn.active {
+        .btn.ready {
             opacity: 1;
             pointer-events: auto;
+            transform: scale(1);
         }
 
-        .download-btn.active:hover {
-            background: #15803d;
-            transform: translateY(-2px);
+        .btn.ready:active {
+            transform: scale(0.96);
         }
 
-        /* --- الجوال (تعديل جذري للمساحة) --- */
-        @media (max-width: 768px) {
-            .main-wrapper {
-                flex-direction: column; /* عمودي */
-            }
-
-            .image-section {
-                flex: 1; /* الصورة تأخذ ما تبقى من مساحة فقط */
-                padding: 10px;
-                order: 1;
-            }
-
-            .control-section {
-                width: 100%;
-                height: auto; /* الارتفاع يتحدد بالمحتوى */
-                padding: 20px 15px 30px 15px; /* زيادة الهامش السفلي للزر */
-                border-right: none;
-                border-top: 1px solid #e2e8f0;
-                order: 2; /* العداد والزر دائماً تحت */
-                flex-shrink: 0; /* ضمان عدم انضغاط هذه المنطقة */
-            }
-
-            .timer-info {
-                margin-bottom: 15px;
-            }
-
-            .timer-text {
-                font-size: 1.1rem;
-            }
-
-            .download-btn {
-                height: 55px; /* تقليل ارتفاع الزر قليلاً في الجوال لضمان ظهوره */
+        /* إضافة مسافة للأجهزة ذات النتوء (Notch) في الأسفل مثل الآيفون */
+        @supports (padding-bottom: env(safe-area-inset-bottom)) {
+            .action-section {
+                padding-bottom: calc(20px + env(safe-area-inset-bottom));
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="main-wrapper">
+    <div class="wrapper">
         
-        <div class="image-section">
+        <div class="ad-section">
             <a href="https://lirat.store/r/F0H74" target="_blank">
                 <img src="https://i.postimg.cc/hG0dZ1nS/FB-IMG-1768594887137.jpg" alt="AD">
             </a>
         </div>
 
-        <div class="control-section">
-            <div class="timer-info" id="status-container">
-                <p class="timer-text">جاهز للتحميل خلال <span id="timer">5</span> ثوانٍ</p>
+        <div class="action-section">
+            <div class="timer-display" id="msg-box">
+                <p class="timer-text">سيظهر الرابط خلال <span id="timer">5</span> ثوانٍ</p>
             </div>
 
             <a id="downloadBtn" 
                href="https://a.top4top.io/f_cJDbBG5nUxhS-DQrD6_c8Q/1768838167/36695w5lu0.rar" 
-               class="download-btn">
-               📥 تحميل الملف الآن
+               class="btn">
+               ⬇️ تحميل الملف الآن
             </a>
         </div>
 
@@ -167,18 +151,18 @@
 
     <script>
         let count = 5;
-        const timerElement = document.getElementById('timer');
-        const downloadBtn = document.getElementById('downloadBtn');
-        const statusContainer = document.getElementById('status-container');
+        const timerEl = document.getElementById('timer');
+        const btnEl = document.getElementById('downloadBtn');
+        const msgBox = document.getElementById('msg-box');
 
-        const countdown = setInterval(() => {
+        const timerInterval = setInterval(() => {
             count--;
-            timerElement.textContent = count;
+            if(timerEl) timerEl.textContent = count;
 
             if (count <= 0) {
-                clearInterval(countdown);
-                statusContainer.innerHTML = "<p class='timer-text' style='color:#16a34a'>✅ الرابط جاهز للتحميل الآن</p>";
-                downloadBtn.classList.add('active');
+                clearInterval(timerInterval);
+                msgBox.innerHTML = "<p class='timer-text' style='color:#16a34a'>✅ الرابط جاهز للتحميل</p>";
+                btnEl.classList.add('ready');
             }
         }, 1000);
     </script>
