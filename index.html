@@ -6,11 +6,8 @@
     <title>بوابة التحميل</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        /* تصغير وحماية الشاشة */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         html, body {
             height: 100%;
@@ -21,13 +18,13 @@
         }
 
         /* أنيميشن الوميض للصورة */
-        @keyframes pulse-clickable {
+        @keyframes imgPulse {
             0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(0.98); opacity: 0.85; }
+            50% { transform: scale(0.97); opacity: 0.9; }
             100% { transform: scale(1); opacity: 1; }
         }
 
-        .wrapper {
+        .main-container {
             display: grid;
             height: 100%;
             width: 100%;
@@ -36,7 +33,7 @@
         }
 
         /* قسم الصورة */
-        .ad-section {
+        .top-visual {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -45,55 +42,54 @@
             min-height: 0; 
         }
 
-        .ad-link {
+        .clickable-link {
             display: flex;
             width: 100%;
             height: 100%;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            animation: pulse-clickable 2.5s infinite ease-in-out;
+            animation: imgPulse 3s infinite ease-in-out;
             text-decoration: none;
         }
 
-        .ad-link img {
+        .clickable-link img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain; 
             border-radius: 12px;
         }
 
-        /* قسم التحكم */
-        .action-section {
+        /* قسم التحكم السفلي */
+        .bottom-controls {
             background: #ffffff;
             padding: 25px 25px calc(25px + env(safe-area-inset-bottom)) 25px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            border-top: 1px solid #e2e8f0;
+            border-top: 2px solid #f1f5f9;
             z-index: 10;
         }
 
-        .timer-box {
+        /* نص الانتظار الافتراضي */
+        .status-msg {
             margin-bottom: 20px;
             text-align: center;
-        }
-
-        .timer-text {
             font-size: 1.2rem;
-            color: #334155;
+            color: #475569;
             font-weight: 600;
         }
 
-        #timer {
-            color: #4c1d95; /* لون بنفسجي غامق جداً للعداد */
-            font-size: 1.4rem;
+        /* العداد بلون داكن */
+        #timer-count {
+            color: #2e1065; 
+            font-size: 1.5rem;
             font-weight: 800;
         }
 
-        /* زر التحميل */
-        .btn {
+        /* الزر */
+        .final-btn {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -107,62 +103,64 @@
             font-weight: 700;
             border-radius: 16px;
             transition: all 0.4s ease;
-            opacity: 0.3;
+            opacity: 0.2;
             pointer-events: none;
         }
 
-        .btn.ready {
+        .final-btn.ready-to-go {
             opacity: 1;
             pointer-events: auto;
             box-shadow: 0 10px 15px -3px rgba(22, 163, 74, 0.3);
         }
 
-        /* تنسيق الكمبيوتر */
+        /* وضعية الكمبيوتر */
         @media (min-width: 1024px) {
-            .wrapper { grid-template-rows: none; grid-template-columns: 1.3fr 0.7fr; }
-            .ad-section { padding: 0; background: #f1f5f9; border-left: 1px solid #e2e8f0; }
-            .ad-link { padding: 40px; }
-            .action-section { border-top: none; padding: 40px; }
+            .main-container { grid-template-rows: none; grid-template-columns: 1.3fr 0.7fr; }
+            .top-visual { border-left: 1px solid #e2e8f0; }
+            .clickable-link { padding: 40px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="wrapper">
-        <div class="ad-section">
-            <a href="https://lirat.store/r/F0H74" target="_blank" class="ad-link">
+    <div class="main-container">
+        <div class="top-visual">
+            <a href="https://lirat.store/r/F0H74" target="_blank" class="clickable-link">
                 <img src="https://i.postimg.cc/hG0dZ1nS/FB-IMG-1768594887137.jpg" alt="AD">
             </a>
         </div>
 
-        <div class="action-section">
-            <div class="timer-box" id="msg-box">
-                <p class="timer-text">يرجى الانتظار.. <span id="timer">5</span> ثوانٍ</p>
+        <div class="bottom-controls">
+            <div id="dynamic-message" class="status-msg">
+                يرجى الانتظار.. <span id="timer-count">5</span> ثوانٍ
             </div>
 
-            <a id="downloadBtn" 
+            <a id="download-trigger" 
                href="https://a.top4top.io/f_cJDbBG5nUxhS-DQrD6_c8Q/1768838167/36695w5lu0.rar" 
-               class="btn">
+               class="final-btn">
                ⬇️ تحميل الملف
             </a>
         </div>
     </div>
 
     <script>
-        let count = 5;
-        const timerEl = document.getElementById('timer');
-        const btnEl = document.getElementById('downloadBtn');
-        const msgBox = document.getElementById('msg-box');
+        let seconds = 5;
+        const timerDisplay = document.getElementById('timer-count');
+        const btnTrigger = document.getElementById('download-trigger');
+        const msgWrapper = document.getElementById('dynamic-message');
 
-        const timerInterval = setInterval(() => {
-            count--;
-            if(timerEl) timerEl.textContent = count;
+        const runCountdown = setInterval(() => {
+            seconds--;
+            if(timerDisplay) timerDisplay.textContent = seconds;
 
-            if (count <= 0) {
-                clearInterval(timerInterval);
-                // استخدام لون بنفسجي غامق جداً (Indigo-900)
-                msgBox.innerHTML = '<p style="color: #4c1d95 !important; font-size: 1.3rem; font-weight: 800; text-align: center;">✅ الرابط جاهز .. إضغط للتحميل</p>';
-                btnEl.classList.add('ready');
+            if (seconds <= 0) {
+                clearInterval(runCountdown);
+                
+                // تغيير جذري للنص واللون (بنفسجي ملكي غامق جداً)
+                msgWrapper.innerHTML = '✅ <span style="color: #2e1065 !important; font-size: 1.3rem !important; font-weight: 800 !important; display: inline-block;">الرابط جاهز .. إضغط للتحميل</span>';
+                
+                // تفعيل الزر
+                btnTrigger.classList.add('ready-to-go');
             }
         }, 1000);
     </script>
