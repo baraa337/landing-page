@@ -6,7 +6,6 @@
     <title>بوابة التحميل</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800&display=swap" rel="stylesheet">
     <style>
-        /* الأساسيات وتصفير المسافات */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -21,14 +20,12 @@
             background-color: #f0f2f5;
         }
 
-        /* أنيميشن الوميض للصورة */
         @keyframes pulse-clickable {
-            0% { transform: scale(1); opacity: 1; filter: drop-shadow(0 0 0 rgba(124, 58, 237, 0)); }
-            50% { transform: scale(0.98); opacity: 0.85; filter: drop-shadow(0 0 15px rgba(124, 58, 237, 0.3)); }
-            100% { transform: scale(1); opacity: 1; filter: drop-shadow(0 0 0 rgba(124, 58, 237, 0)); }
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(0.98); opacity: 0.85; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
-        /* الحاوية الرئيسية بنظام الشبكة */
         .wrapper {
             display: grid;
             height: 100%;
@@ -37,7 +34,6 @@
             background: #fff;
         }
 
-        /* --- قسم الصورة --- */
         .ad-section {
             display: flex;
             justify-content: center;
@@ -58,11 +54,6 @@
             text-decoration: none;
         }
 
-        .ad-link:hover {
-            animation: none;
-            opacity: 0.9;
-        }
-
         .ad-link img {
             max-width: 100%;
             max-height: 100%;
@@ -70,7 +61,6 @@
             border-radius: 12px;
         }
 
-        /* --- قسم التحكم (الزر والعداد) --- */
         .action-section {
             background: #ffffff;
             padding: 25px 25px calc(25px + env(safe-area-inset-bottom)) 25px;
@@ -79,7 +69,6 @@
             align-items: center;
             justify-content: center;
             border-top: 1px solid #e2e8f0;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.03);
             z-index: 10;
         }
 
@@ -95,12 +84,11 @@
         }
 
         #timer {
-            color: #7c3aed; /* لون العداد بنفسجي أيضاً للتناسق */
+            color: #8b5cf6; /* بنفسجي في العداد أيضاً */
             font-size: 1.4rem;
             font-weight: 800;
         }
 
-        /* زر التحميل المصمم باحترافية */
         .btn {
             display: flex;
             align-items: center;
@@ -114,55 +102,31 @@
             font-size: 1.2rem;
             font-weight: 700;
             border-radius: 16px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0.4;
+            transition: all 0.4s ease;
+            opacity: 0.3;
             pointer-events: none;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         .btn.ready {
             opacity: 1;
             pointer-events: auto;
-            transform: scale(1);
             box-shadow: 0 10px 15px -3px rgba(22, 163, 74, 0.3);
         }
 
-        .btn.ready:hover {
-            background: #15803d;
-            transform: translateY(-3px);
-        }
-
-        /* --- تعديلات وضعية الكمبيوتر (Desktop) --- */
         @media (min-width: 1024px) {
-            .wrapper {
-                grid-template-rows: none;
-                grid-template-columns: 1.3fr 0.7fr; 
-            }
-            
-            .ad-section {
-                padding: 0;
-                background: #f1f5f9;
-                border-left: 1px solid #e2e8f0;
-            }
-
-            .ad-link {
-                padding: 40px;
-            }
-
-            .action-section {
-                border-top: none;
-                padding: 40px;
-            }
+            .wrapper { grid-template-rows: none; grid-template-columns: 1.3fr 0.7fr; }
+            .ad-section { padding: 0; background: #f1f5f9; border-left: 1px solid #e2e8f0; }
+            .ad-link { padding: 40px; }
+            .action-section { border-top: none; padding: 40px; }
         }
     </style>
 </head>
 <body>
 
     <div class="wrapper">
-        
         <div class="ad-section">
             <a href="https://lirat.store/r/F0H74" target="_blank" class="ad-link">
-                <img src="https://i.postimg.cc/hG0dZ1nS/FB-IMG-1768594887137.jpg" alt="إعلان">
+                <img src="https://i.postimg.cc/hG0dZ1nS/FB-IMG-1768594887137.jpg" alt="AD">
             </a>
         </div>
 
@@ -177,7 +141,6 @@
                ⬇️ تحميل الملف
             </a>
         </div>
-
     </div>
 
     <script>
@@ -192,8 +155,8 @@
 
             if (count <= 0) {
                 clearInterval(timerInterval);
-                // تغيير اللون هنا إلى البنفسجي (#7c3aed)
-                msgBox.innerHTML = "<p class='timer-text' style='color:#7c3aed; font-weight:bold;'>✅ الرابط جاهز .. إضغط للتحميل</p>";
+                // فرض اللون البنفسجي باستخدام !important لضمان التنفيذ
+                msgBox.innerHTML = '<p style="color: #8b5cf6 !important; font-size: 1.2rem; font-weight: 800; text-align: center;">✅ الرابط جاهز .. إضغط للتحميل</p>';
                 btnEl.classList.add('ready');
             }
         }, 1000);
