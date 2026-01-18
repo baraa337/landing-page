@@ -6,7 +6,6 @@
     <title>بوابة التحميل</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800&display=swap" rel="stylesheet">
     <style>
-        /* تصغير وحماية الشاشة */
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         html, body {
@@ -17,7 +16,6 @@
             background-color: #f0f2f5;
         }
 
-        /* أنيميشن الوميض للصورة */
         @keyframes imgPulse {
             0% { transform: scale(1); opacity: 1; }
             50% { transform: scale(0.97); opacity: 0.9; }
@@ -32,7 +30,6 @@
             background: #fff;
         }
 
-        /* قسم الصورة */
         .top-visual {
             display: flex;
             justify-content: center;
@@ -60,7 +57,6 @@
             border-radius: 12px;
         }
 
-        /* قسم التحكم السفلي */
         .bottom-controls {
             background: #ffffff;
             padding: 25px 25px calc(25px + env(safe-area-inset-bottom)) 25px;
@@ -72,7 +68,6 @@
             z-index: 10;
         }
 
-        /* نص الانتظار الافتراضي */
         .status-msg {
             margin-bottom: 20px;
             text-align: center;
@@ -81,14 +76,13 @@
             font-weight: 600;
         }
 
-        /* العداد بلون داكن */
+        /* لون العداد بنفسجي صريح من البداية */
         #timer-count {
-            color: #2e1065; 
+            color: #7c3aed; 
             font-size: 1.5rem;
             font-weight: 800;
         }
 
-        /* الزر */
         .final-btn {
             display: flex;
             align-items: center;
@@ -113,7 +107,6 @@
             box-shadow: 0 10px 15px -3px rgba(22, 163, 74, 0.3);
         }
 
-        /* وضعية الكمبيوتر */
         @media (min-width: 1024px) {
             .main-container { grid-template-rows: none; grid-template-columns: 1.3fr 0.7fr; }
             .top-visual { border-left: 1px solid #e2e8f0; }
@@ -156,10 +149,9 @@
             if (seconds <= 0) {
                 clearInterval(runCountdown);
                 
-                // تغيير جذري للنص واللون (بنفسجي ملكي غامق جداً)
-                msgWrapper.innerHTML = '✅ <span style="color: #2e1065 !important; font-size: 1.3rem !important; font-weight: 800 !important; display: inline-block;">الرابط جاهز .. إضغط للتحميل</span>';
+                // تغيير النص واللون إلى البنفسجي الصريح (7c3aed)
+                msgWrapper.innerHTML = '✅ <span style="color: #7c3aed !important; font-size: 1.3rem !important; font-weight: 800 !important; display: inline-block;">الرابط جاهز .. إضغط للتحميل</span>';
                 
-                // تفعيل الزر
                 btnTrigger.classList.add('ready-to-go');
             }
         }, 1000);
